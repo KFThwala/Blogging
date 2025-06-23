@@ -1,0 +1,49 @@
+import React from "react";
+import Header from "../../components/header/Header";
+import "./Landing.css";
+import Button from "../../components/button/Button";
+import FeaturesSection from "../../components/feature_section/FeatureSection";
+import SamplePostsSection from "../../components/samplePost/SamplePostSection";
+import Footer from "../../components/footer/Footer";
+import { Link } from "react-router-dom";
+
+function Landing() {
+	return (
+		<div>
+			<Header />
+			<section className="container_hero">
+				<div className="content">
+					<div className="left_content">
+						<h1>Landing Page</h1>
+						<p>
+							Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
+							sapiente, temporibus esse accusamus ipsum tempore tempora eum
+							voluptatum nesciunt debitis delectus?
+						</p>
+						<Link to="/register" className="get_started_button">
+							Get Started
+						</Link>
+					</div>
+					<div className="right_content">
+						<img
+							className="landing_image"
+							src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+							alt="Landing"
+						/>
+					</div>
+				</div>
+				<div className="scroll-mouse-container">
+					<div className="mouse">
+						<div className="scroll-wheel" />
+					</div>
+					<p className="scroll-text">Scroll</p>
+				</div>
+			</section>
+			<FeaturesSection />
+			<SamplePostsSection />
+			<Footer />
+		</div>
+	);
+}
+
+export default Landing;

@@ -1,0 +1,32 @@
+/* src/components/Loading.css */
+
+.loader-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.fullscreen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(255, 255, 255, 0.8); /* optional backdrop */
+	z-index: 9999;
+}
+
+.spinner {
+	width: 48px;
+	height: 48px;
+	border: 6px solid #ccc;
+	border-top-color: #0061A8; /* Primary blue */
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	to {
+		transform: rotate(360deg);
+	}
+}

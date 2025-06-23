@@ -1,0 +1,85 @@
+/* Header container */
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: #000a08;
+	color: #fff;
+	padding: 20px 20px;
+	margin: 20px;
+	border-radius: 20px;
+}
+
+/* Logo styling */
+.logo {
+	font-size: 1.5rem;
+	color: #fff;
+	text-decoration: none;
+}
+
+/* Navigation sections */
+.links,
+.auth-links {
+	display: flex;
+	gap: 15px;
+	align-items: center;
+	color: #fff;
+}
+
+/* Base link and button styles */
+.links a,
+.auth-links a:not(.profile-avatar),
+.auth-links button {
+	color: #fff;
+	text-decoration: none;
+	background: none;
+	border: none;
+	cursor: pointer;
+	font-size: 1rem;
+}
+
+/* Icon hover effects */
+.links a:hover .icon,
+.auth-links a:hover .icon {
+	color: #1E40AF;
+	transform: scale(1.5);
+	transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* Active route icon */
+.links a.active .icon {
+	color: #1E40AF;
+	transform: scale(1.5);
+}
+
+/* Profile avatar (first letter of full name) */
+.profile-avatar {
+	width: 32px;
+	height: 32px;
+	background-color: #3961e5;
+	color: #fff;
+	font-weight: bold;
+	font-size: 16px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+
+/* Logout button */
+.icon-button {
+	background: none;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	margin: 0 0.5rem;
+}
+
+/* Hover effect for logout icon */
+.icon-button:hover {
+	color: #1E40AF;
+	transform: scale(1.5);
+	transition: color 0.3s ease, transform 0.3s ease;
+}

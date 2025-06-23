@@ -1,0 +1,156 @@
+
+/* Container wraps the whole landing section */
+.container_hero {
+	width: 100%;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative; /* required for absolutely positioning the scroll cue */
+	padding: 0 1rem;
+}
+
+/* Main content section */
+.content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 4rem;
+	flex-wrap: wrap;
+	max-width: 1200px;
+    margin: 20 auto;
+	width: 100%;
+	/* padding: 3rem; */
+}
+
+/* Position the scroll cue at bottom center of hero */
+.scroll-mouse-container {
+	position: absolute;
+	bottom: 100px;
+	left: 50%;
+ 
+	transform: translateX(-50%);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	animation: fadeIn 1s ease-in-out;
+}
+
+.mouse {
+	width: 24px;
+	height: 40px;
+	border: 2px solid #1e3a8a;
+	border-radius: 14px;
+	position: relative;
+	box-sizing: border-box;
+}
+
+.scroll-wheel {
+	width: 4px;
+	height: 8px;
+	background-color: #1e3a8a;
+	border-radius: 2px;
+	position: absolute;
+	top: 8px;
+	left: 50%;
+	transform: translateX(-50%);
+	animation: scrollAnim 2s infinite;
+}
+
+@keyframes scrollAnim {
+	0% {
+		opacity: 0;
+		transform: translateX(-50%) translateY(0);
+	}
+	50% {
+		opacity: 1;
+		transform: translateX(-50%) translateY(8px);
+	}
+	100% {
+		opacity: 0;
+		transform: translateX(-50%) translateY(0);
+	}
+}
+
+.scroll-text {
+	margin-top: 0.5rem;
+	color: #1e3a8a;
+	font-size: 0.9rem;
+	opacity: 0.8;
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+		transform: translateY(10px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+
+/* Left column: text */
+.left_content {
+	flex: 1;
+	min-width: 300px;
+}
+
+.left_content h1 {
+	font-size: 2.75rem;
+	color: #1E40AF;
+	margin-bottom: 1rem;
+}
+
+.left_content p {
+	font-size: 1.125rem;
+	color: #4B5563;
+}
+
+/* Right column: image */
+.right_content {
+	flex: 1;
+	min-width: 300px;
+}
+
+.landing_image {
+	max-width: 100%;
+	height: auto;
+	border-radius: 12px;
+	object-fit: cover;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.get_started_button {
+    background-color: #000a08;
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.get_started_button:hover {
+    background-color: #1E40AF;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.content {
+		flex-direction: column-reverse;
+		text-align: center;
+		padding: 2rem;
+	}
+
+	.left_content h1 {
+		font-size: 2rem;
+	}
+
+	.left_content p {
+		font-size: 1rem;
+	}
+}
