@@ -79,7 +79,7 @@ header {
 
 /* Hover effect for logout icon */
 .icon-button:hover {
-	color: #1E40AF;
+	color: #f80b0b;
 	transform: scale(1.5);
 	transition: color 0.3s ease, transform 0.3s ease;
 }

@@ -4,3 +4,27 @@ body{
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+
+/* The container wrapping header, main content, and footer */
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;  /* Full viewport height */
+}
+
+/* Main content area should grow to fill remaining space */
+.content-wrap {
+  flex: 1 0 auto;
+   overflow-y: auto;  
+}
+
+/* Footer styles you already have */
+.footer {
+  flex-shrink: 0; /* Prevent footer from shrinking */
+  background-color: #000a08;
+  color: #ffffff;
+  padding: 2rem 1rem;
+  text-align: center;
+
+}
+

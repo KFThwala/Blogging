@@ -53,7 +53,7 @@ function Login() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
-
+		setLoading(true); // ⬅️ Show loading
 		if (!validate()) return;
 		try {
 			const response = await login(formData);
@@ -66,6 +66,8 @@ function Login() {
 		} catch (error) {
 			toast.error("Registration failed!");
 			console.error(error);
+		} finally {
+			setLoading(false); // ⬅️ Hide loading regardless of success/failure
 		}
 	};
 	return (
@@ -97,6 +99,9 @@ function Login() {
 					<p>
 						Don't have an account? <Link to="/register">Sign Up</Link>
 					</p>
+					<p>or</p>
+					<button>Login with Google</button>
+					<button>Login with Facebook</button>
 				</form>
 			</motion.div>
 		</div>

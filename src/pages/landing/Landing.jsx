@@ -1,10 +1,10 @@
 import React from "react";
-import Header from "../../components/header/Header";
+import Header from "../../components/common/header/Header";
 import "./Landing.css";
-import Button from "../../components/button/Button";
-import FeaturesSection from "../../components/feature_section/FeatureSection";
-import SamplePostsSection from "../../components/samplePost/SamplePostSection";
-import Footer from "../../components/footer/Footer";
+import Button from "../../components/common/button/Button";
+import FeaturesSection from "../../components/Landing/feature_section/FeatureSection";
+import SamplePostsSection from "../../components/Landing/samplePost/SamplePostSection";
+import Footer from "../../components/common/footer/Footer";
 import { Link } from "react-router-dom";
 
 function Landing() {

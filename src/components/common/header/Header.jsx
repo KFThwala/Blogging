@@ -9,7 +9,7 @@ import {
 	FiUserPlus,
 } from "react-icons/fi";
 import { IoMdLogOut } from "react-icons/io";
-import { useAuth } from "../../context/authContext";
+import { useAuth } from "../../../context/authContext";
 import LogoutModal from "../logoutModal/LogoutModal";
 import "./Header.css";
 
