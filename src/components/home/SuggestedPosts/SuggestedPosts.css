@@ -1,0 +1,23 @@
+.suggested-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.suggested-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-transform: none;
+}
+
+.suggested-list li {
+    margin-bottom: 1rem;
+    cursor: pointer;
+  
+}
+
+.suggested-list li a {
+    text-decoration: none;
+    color: #0061A8;
+}

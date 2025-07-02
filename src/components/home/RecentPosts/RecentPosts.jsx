@@ -22,7 +22,6 @@ function RecentPosts() {
 
 	return (
 		<section className="posts-section">
-			<h2>Recent Posts</h2>
 			<div className="posts-grid">
 				{posts.map((post) => (
 					<PostCard key={post._id} post={post} />

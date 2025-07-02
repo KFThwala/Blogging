@@ -99,9 +99,6 @@ function Login() {
 					<p>
 						Don't have an account? <Link to="/register">Sign Up</Link>
 					</p>
-					<p>or</p>
-					<button>Login with Google</button>
-					<button>Login with Facebook</button>
 				</form>
 			</motion.div>
 		</div>

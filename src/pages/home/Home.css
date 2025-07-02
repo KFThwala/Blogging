@@ -1,7 +1,18 @@
 .homeContainer {
-    display: flex;
-    flex-direction: column;
-    /* align-items: center;
-    justify-content: center; */
-    height: 100vh;
+  display: flex;
+  gap: 24px;
+  padding: 20px;
+  height: 100vh;
+}
+
+/* Main content takes up more space */
+.mainContent {
+  flex: 3;
+}
+
+/* Sidebar */
+.asideContent {
+  flex: 1;
+  border-left: 1px solid #ddd;
+  padding-left: 20px;
 }

@@ -1,21 +1,19 @@
-// src/components/common/postCard/PostCard.jsx
 import React from "react";
+import { formatDistanceToNow } from "date-fns";
 import "./PostCard.css";
 
 function PostCard({ post }) {
-	const { title, excerpt, image, author } = post;
+	const { title, excerpt, image, author, createdAt } = post;
 
 	return (
-		<article className="post-card">
-			{image && (
-				<img
-					src={image || "https://via.placeholder.com/400x200?text=No+Image"}
-					alt={title}
-					className="post-image"
-				/>
-			)}
-
-			<div className="post-content">
+		<article
+			className="post-card"
+			style={{
+				backgroundImage: `url(${
+					image || "https://via.placeholder.com/400x200?text=No+Image"
+				})`,
+			}}>
+			<div className="post-overlay">
 				<h3 className="post-title">{title}</h3>
 				<p className="post-excerpt">{excerpt}</p>
 
@@ -32,6 +30,14 @@ function PostCard({ post }) {
 						</div>
 					)}
 					<span className="author-name">{author?.fullName}</span>
+				</div>
+
+				<div className="post-timespan">
+					{createdAt
+						? `${formatDistanceToNow(new Date(createdAt), {
+								addSuffix: true,
+						  })}`
+						: "Unknown date"}
 				</div>
 			</div>
 		</article>
