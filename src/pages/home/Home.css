@@ -3,6 +3,7 @@
   gap: 24px;
   padding: 20px;
   height: 100vh;
+  
 }
 
 /* Main content takes up more space */
@@ -15,4 +16,29 @@
   flex: 1;
   border-left: 1px solid #ddd;
   padding-left: 20px;
+
+}
+
+/* Floating button to create a blog */
+.floating-button {
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	width: 60px;
+	height: 60px;
+	background-color: #007bff;
+	color: #fff;
+	font-size: 32px;
+	border-radius: 50%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+	transition: background-color 0.3s ease;
+	z-index: 1000;
+}
+
+.floating-button:hover {
+	background-color: #0056b3;
 }

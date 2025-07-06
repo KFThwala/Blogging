@@ -5,6 +5,7 @@ import Login from "../pages/authentication/login/Login";
 import WebLayout from "../layout/WebLayout";
 import ProtectedRoute from "./protectRoute";
 import Home from "../pages/home/Home";
+import CreatePost from "../pages/create-post/CreatePost";
 
 const ProtectedLayout = () => (
 	<ProtectedRoute>
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
 			{
 				path: "/home",
 				element: <Home />,
+			},
+			{
+				path: "/create-post",
+				element: <CreatePost />,
 			},
 		],
 	},

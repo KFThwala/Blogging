@@ -1,0 +1,48 @@
+.skeleton-card {
+	width: 100%;
+	background: #f0f0f0;
+	border-radius: 10px;
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 12px;
+	height: 250px;
+}
+
+.skeleton-image {
+	height: 120px;
+	width: 100%;
+	background: #ddd;
+	border-radius: 8px;
+}
+
+.skeleton-title,
+.skeleton-excerpt,
+.skeleton-author {
+	height: 12px;
+	width: 80%;
+	background: #ddd;
+	border-radius: 4px;
+	margin-top: 8px;
+}
+
+.shimmer {
+	animation: shimmer 1.5s infinite linear;
+	background: linear-gradient(
+		to right,
+		#dddddd 0%,
+		#eeeeee 50%,
+		#dddddd 100%
+	);
+	background-size: 200% 100%;
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: -200% 0;
+	}
+	100% {
+		background-position: 200% 0;
+	}
+}
