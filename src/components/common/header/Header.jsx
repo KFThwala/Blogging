@@ -63,7 +63,7 @@ function Header() {
 			</nav>
 
 			{!user ? (
-				<nav className="unAuth-links">
+				<nav className="auth-links">
 					<Link to="/login" title="Login">
 						<FiLogIn className="icon" />
 					</Link>

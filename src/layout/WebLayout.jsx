@@ -5,7 +5,9 @@ import { useLocation } from "react-router-dom";
 
 function WebLayout() {
 	const location = useLocation();
-	const hideLayout = location.pathname === "/create-post";
+	const hideLayout =
+		location.pathname === "/create-post" ||
+		location.pathname.startsWith("/post/");
 
 	return (
 		<div className="page-container">

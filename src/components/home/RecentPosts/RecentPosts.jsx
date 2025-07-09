@@ -3,6 +3,7 @@ import API from "../../../api/axios";
 import PostCard from "../../common/postCard/PostCard";
 import "./RecentPosts.css";
 import SkeletonPostCard from "../../common/SkeletonPostCard/SkeletonPostCard"; // skeleton component
+import { Link } from "react-router-dom";
 
 function RecentPosts() {
 	const [posts, setPosts] = useState([]);
@@ -39,7 +40,9 @@ function RecentPosts() {
 			) : (
 				<div className="posts-grid">
 					{posts.map((post) => (
-						<PostCard key={post._id} post={post} />
+						<Link to={`/post/${post._id}`}>
+							<PostCard key={post._id} post={post} />
+						</Link>
 					))}
 				</div>
 			)}
