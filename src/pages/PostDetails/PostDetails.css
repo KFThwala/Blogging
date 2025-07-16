@@ -3,7 +3,8 @@
    
     margin: 20px;
     padding: 20px;
-   
+   background-color: #fffefc;
+
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
    
@@ -43,17 +44,14 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+	align-items: center;
     height: 100%;
+	padding-bottom: 2rem;
+	border-radius: 10px;
+	background-color: beige;
+
 }
 
-.trending {
-    background-color: #000a08;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-weight: bold;
-    font-size: 1.2rem;
-}
 
 .post-author-card {
 	display: flex;
@@ -176,6 +174,7 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
+	background-color: #fff;
 }
 
 .comment-form textarea {
@@ -201,7 +200,7 @@
 }
 
 .comment {
-	background: #f9f9f9;
+	background: #b7b5b5;
 	padding: 1rem;
 	border-radius: 6px;
 	margin-bottom: 1rem;

@@ -5,6 +5,7 @@ import "./PostDetails.css";
 import ReactMarkdown from "react-markdown";
 import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { useAuth } from "../../context/authContext";
+import TrendingPosts from "../../components/common/TrendingPosts/TrendingPosts";
 
 function PostDetails() {
 	const { id } = useParams();
@@ -145,15 +146,15 @@ function PostDetails() {
 					{post.comments?.map((comment) => (
 						<div key={comment._id} className="comment">
 							<p className="comment-author">{comment.author.fullName}</p>
-							<p>{comment.text}</p>
+							<p>{comment.content}</p>
 						</div>
 					))}
 				</div>
 			</div>
 
 			<div className="right-section">
-				<h2 className="trending">Trending</h2>
 				{/* You can add trending posts or sidebar content here */}
+				<TrendingPosts />
 			</div>
 		</div>
 	);

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import "./SuggestedPosts.css";
 import API from "../../../api/axios";
 import SkeletonSuggestedPost from "../../common/SkeletonPostCard/SkeletonPostCard";
+import AsidePost from "../../common/AsidePosts/AsidePosts";
 
 function SuggestedPosts() {
 	const [suggestedPosts, setSuggestedPosts] = useState([]);
@@ -41,23 +42,7 @@ function SuggestedPosts() {
 							<SkeletonSuggestedPost key={i} />
 					  ))
 					: suggestedPosts.map((post) => (
-							<Link
-								key={post._id}
-								to={`/posts/${post._id}`}
-								className="suggested-post">
-								<img
-									src={post.image || "/default-thumbnail.jpg"}
-									alt={post.title}
-									className="suggested-post-image"
-								/>
-								<div className="suggested-post-info">
-									<p className="suggested-post-title">{post.title}</p>
-									<p className="suggested-post-meta">
-										By {post.author?.fullName} •{" "}
-										{new Date(post.createdAt).toLocaleDateString()}
-									</p>
-								</div>
-							</Link>
+							<AsidePost key={post._id} post={post} />
 					  ))}
 			</ul>
 		</div>
