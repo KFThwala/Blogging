@@ -117,7 +117,7 @@ const CreatePostForm = () => {
 					</div>
 				)}
 
-				<button type="submit" disabled={loading}>
+				<button className="create_post_button" type="submit" disabled={loading}>
 					{loading ? "Creating..." : "Create Post"}
 				</button>
 

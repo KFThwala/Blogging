@@ -43,8 +43,8 @@ function Header() {
 					<FiHome className="icon" />
 				</NavLink>
 				<NavLink
-					to="/blog"
-					title="Blog"
+					to="/blogs"
+					title="Blogs"
 					className={({ isActive }) => (isActive ? "active" : "")}>
 					<FiBookOpen className="icon" />
 				</NavLink>

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const AsidePost = ({ post }) => {
 	return (
-		<Link to={`/posts/${post._id}`} className="aside-post">
+		<Link to={`/post/${post._id}`} className="aside-post">
 			<img
 				src={post.image || "/default-thumbnail.jpg"}
 				alt={post.title}

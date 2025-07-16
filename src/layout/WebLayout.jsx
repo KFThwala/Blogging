@@ -5,17 +5,32 @@ import { useLocation } from "react-router-dom";
 
 function WebLayout() {
 	const location = useLocation();
-	const hideLayout =
-		location.pathname === "/create-post" ||
-		location.pathname.startsWith("/post/");
+
+	// Define paths where layout should be hidden
+	const hideLayoutPaths = [
+		"/create-post",
+		"/post", // Matches /post and /post/*
+		"/profile", // Matches /profile and /profile/*
+		"/login",
+		"/register",
+	];
+
+	const shouldHideLayout = hideLayoutPaths.some(
+		(path) =>
+			location.pathname === path ||
+			location.pathname.startsWith(`${path}/`) ||
+			location.pathname.startsWith(`${path}-`) // Optional: for paths like /profile-edit
+	);
 
 	return (
-		<div className="page-container">
-			{!hideLayout && <Header />}
-			<main className="content-wrap">
+		<div>
+			{!shouldHideLayout && <Header />}
+
+			<main className={`main-content ${shouldHideLayout ? "full-width" : ""}`}>
 				<Outlet />
 			</main>
-			{!hideLayout && <Footer />}
+
+			{!shouldHideLayout && <Footer />}
 		</div>
 	);
 }

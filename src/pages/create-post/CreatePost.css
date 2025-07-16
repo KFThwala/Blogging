@@ -73,11 +73,11 @@ button {
   transition: background-color 0.2s ease;
 }
 
-button:hover:not(:disabled) {
+.create_post_button:hover:not(:disabled) {
   background-color: #1d4ed8;
 }
 
-button:disabled {
+.create_post_button:disabled {
   background-color: #93c5fd;
   cursor: not-allowed;
 }
