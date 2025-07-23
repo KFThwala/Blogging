@@ -7,6 +7,7 @@ import formatDistanceToNow from "date-fns/formatDistanceToNow";
 import { useAuth } from "../../context/authContext";
 import TrendingPosts from "../../components/common/TrendingPosts/TrendingPosts";
 import { useNavigate } from "react-router-dom";
+import LikeButton from "../../components/common/LikeButton/LikeButton";
 
 function PostDetails() {
 	const { id } = useParams();
@@ -16,6 +17,8 @@ function PostDetails() {
 	const [comments, setComments] = useState([]);
 	const [submitting, setSubmitting] = useState(false);
 	const [liked, setLiked] = useState(false);
+	const [animate, setAnimate] = useState(false);
+
 	const [replyText, setReplyText] = useState({});
 	const [commentLikes, setCommentLikes] = useState({});
 	const navigate = useNavigate();
@@ -62,6 +65,8 @@ function PostDetails() {
 					? prev.likes.filter((uid) => uid !== user._id)
 					: [...prev.likes, user._id],
 			}));
+			setAnimate(true);
+			setTimeout(() => setAnimate(false), 300);
 		} catch (error) {
 			console.error("Like error:", error);
 		}
@@ -193,8 +198,10 @@ function PostDetails() {
 					<div className="like-section">
 						<button
 							onClick={handleLike}
-							className={`like-btn ${liked ? "liked" : ""}`}>
-							{liked ? "❤️ Unlike" : "🤍 Like"}
+							className={`like-btn ${liked ? "liked" : ""} ${
+								animate ? "animate-pop" : ""
+							}`}>
+							{liked ? "❤️" : "🤍 Like"}
 						</button>
 					</div>
 
@@ -237,19 +244,19 @@ function PostDetails() {
 									<p>{comment.content}</p>
 
 									<div className="comment-actions">
-										<button
-											className="like-btn"
-											onClick={() => toggleCommentLike(comment._id)}>
-											{commentLikes[comment._id] ? "❤️ Unlike" : "🤍 Like"} (
-											{comment.likesCount})
-										</button>
-
+										<LikeButton
+											liked={commentLikes[comment._id]}
+											onClick={() => toggleCommentLike(comment._id)}
+											count={comment.likesCount}
+											showCount={true}
+										/>
 										<button
 											className="reply-btn"
 											onClick={() =>
 												setReplyText((prev) => ({
 													...prev,
-													[comment._id]: prev[comment._id] ? "" : "", // toggle visibility
+													[comment._id]:
+														prev[comment._id] === undefined ? "" : undefined,
 												}))
 											}>
 											💬 Reply
@@ -278,7 +285,9 @@ function PostDetails() {
 													}))
 												}
 											/>
-											<button onClick={() => handleReplySubmit(comment._id)}>
+											<button
+												className="reply-btn"
+												onClick={() => handleReplySubmit(comment._id)}>
 												Reply
 											</button>
 										</div>

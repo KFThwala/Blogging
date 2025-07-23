@@ -8,15 +8,8 @@ import { Link } from "react-router-dom";
 import { CiCirclePlus } from "react-icons/ci";
 
 function Home() {
-	const [searchQuery, setSearchQuery] = useState("");
-
-	// You’d pass searchQuery down to RecentPosts or filter posts here
-	const handleSearch = (query) => {
-		setSearchQuery(query);
-	};
 	return (
 		<div>
-			<SearchBar onSearch={handleSearch} />
 			<div className="homeContainer">
 				<main className="mainContent">
 					<RecentPosts />

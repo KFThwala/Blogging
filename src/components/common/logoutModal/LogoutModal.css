@@ -48,7 +48,16 @@
 	color: #000;
 }
 
+.cancel-button:hover {
+	background-color: #999;
+}
+
 .confirm-button {
-	
-	color: #fa0a0a;
+	background-color: transparent;
+	color: #ee6161;
+}
+
+.confirm-button:hover {
+	background-color: #ee6161;
+	color: #fc0505;
 }

@@ -27,6 +27,7 @@ function RecentPosts() {
 
 	return (
 		<section className="posts-section">
+			<h2>Recent Posts</h2>
 			{loading ? (
 				<div className="posts-grid">
 					{Array.from({ length: 4 }).map((_, i) => (

@@ -60,7 +60,7 @@ textarea {
   min-height: 120px;
 }
 
-button {
+.create_post_button {
   width: 100%;
   padding: 12px 0;
   background-color: #2563eb;

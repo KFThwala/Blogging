@@ -9,6 +9,8 @@ import CreatePost from "../pages/create-post/CreatePost";
 import PostDetails from "../pages/PostDetails/PostDetails";
 import Profile from "../pages/profile/Profile";
 import Blogs from "../pages/blogs/Blogs";
+import About from "../pages/about/About";
+import Contact from "../pages/contact/Contact";
 
 const ProtectedLayout = () => (
 	<ProtectedRoute>
@@ -48,6 +50,14 @@ const router = createBrowserRouter([
 			{
 				path: "/blogs",
 				element: <Blogs />,
+			},
+			{
+				path: "/about",
+				element: <About />,
+			},
+			{
+				path: "/contact",
+				element: <Contact />,
 			},
 			{
 				path: "/profile",

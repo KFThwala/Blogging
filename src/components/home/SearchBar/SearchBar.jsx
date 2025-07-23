@@ -1,23 +1,24 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import "./SearchBar.css";
 
-function SearchBar({ onSearch }) {
-	const [query, setQuery] = useState("");
+function SearchBar({ query, onSearch }) {
+	const inputRef = useRef(null);
 
 	const handleChange = (e) => {
-		const value = e.target.value;
-		setQuery(value);
-		onSearch(value); // Send query up for filtering
+		onSearch(e.target.value);
 	};
 
 	const clearSearch = () => {
-		setQuery("");
 		onSearch("");
+		if (inputRef.current) {
+			inputRef.current.focus();
+		}
 	};
 
 	return (
 		<div className="searchBar">
 			<input
+				ref={inputRef}
 				type="search"
 				placeholder="Search posts..."
 				value={query}
