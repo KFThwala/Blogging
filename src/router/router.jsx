@@ -11,6 +11,7 @@ import Profile from "../pages/profile/Profile";
 import Blogs from "../pages/blogs/Blogs";
 import About from "../pages/about/About";
 import Contact from "../pages/contact/Contact";
+import UserProfile from "../pages/userProfile/UserProfile";
 
 const ProtectedLayout = () => (
 	<ProtectedRoute>
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
 			{
 				path: "/profile",
 				element: <Profile />,
+			},
+			{
+				path: "/profile/:id",
+				element: <UserProfile />,
 			},
 		],
 	},

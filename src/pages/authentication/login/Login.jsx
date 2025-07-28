@@ -58,7 +58,6 @@ function Login() {
 		try {
 			const response = await login(formData);
 			if (response.success) {
-				console.log(response, "response");
 				window.location.href = "/home";
 			} else {
 				toast.error(response.message || "Login failed!");
@@ -97,7 +96,10 @@ function Login() {
 					{errors.password && <span className="error">{errors.password}</span>}
 					<button type="submit">{loading ? "Logging in..." : "Login"} </button>
 					<p>
-						Don't have an account? <Link to="/register">Sign Up</Link>
+						Don't have an account?{" "}
+						<Link to="/register" className="link">
+							Signup
+						</Link>
 					</p>
 				</form>
 			</motion.div>

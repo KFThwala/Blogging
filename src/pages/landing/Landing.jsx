@@ -6,6 +6,7 @@ import FeaturesSection from "../../components/Landing/feature_section/FeatureSec
 import SamplePostsSection from "../../components/Landing/samplePost/SamplePostSection";
 import Footer from "../../components/common/footer/Footer";
 import { Link } from "react-router-dom";
+import RecentPosts from "../../components/home/RecentPosts/RecentPosts";
 
 function Landing() {
 	return (
@@ -14,11 +15,12 @@ function Landing() {
 			<section className="container_hero">
 				<div className="content">
 					<div className="left_content">
-						<h1>Landing Page</h1>
+						<h1>Write. Share. Inspire</h1>
 						<p>
-							Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam
-							sapiente, temporibus esse accusamus ipsum tempore tempora eum
-							voluptatum nesciunt debitis delectus?
+							Your go-to destination for sharing stories, ideas, and insights.
+							Whether you're a passionate writer or just getting started,
+							BlogSphere gives you the tools to express yourself, connect with
+							readers, and grow your voice online.
 						</p>
 						<Link to="/register" className="get_started_button">
 							Get Started
@@ -40,7 +42,7 @@ function Landing() {
 				</div>
 			</section>
 			<FeaturesSection />
-			<SamplePostsSection />
+			<RecentPosts />
 			<Footer />
 		</div>
 	);

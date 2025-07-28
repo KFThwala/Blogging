@@ -123,10 +123,10 @@
 }
 
 .get_started_button {
-    background-color: #000a08;
-    color: #fff;
+    color:  #000a08;
     border: none;
     padding: 0.75rem 1.5rem;
+	margin-top: 20px;
     border-radius: 4px;
     font-size: 1rem;
     cursor: pointer;

@@ -10,8 +10,9 @@ import {
 } from "react-icons/fi";
 import { IoMdLogOut } from "react-icons/io";
 import { useAuth } from "../../../context/authContext";
-import LogoutModal from "../logoutModal/LogoutModal";
+
 import "./Header.css";
+import ConfirmModal from "../confirmModal/ConfirmModal";
 
 function Header() {
 	const { user, logout } = useAuth();
@@ -80,14 +81,25 @@ function Header() {
 						<IoMdLogOut className="icon" />
 					</button>
 					<Link to="/profile" className="profile-avatar" title="Profile">
-						{user.fullName?.[0]?.toUpperCase() || "U"}
+						{user?.avatar ? (
+							<img
+								src={user.avatar}
+								alt={user.fullName || "User avatar"}
+								className="avatar-img"
+								style={{ width: 32, height: 32, borderRadius: "50%" }}
+							/>
+						) : (
+							user.fullName?.[0]?.toUpperCase() || "U"
+						)}
 					</Link>
 				</nav>
 			)}
-			<LogoutModal
+			<ConfirmModal
 				isOpen={showModal}
-				onCancel={() => setShowModal(false)}
+				onCancel={() => setShowConfirmModal(false)}
 				onConfirm={handleLogoutConfirm}
+				title="Are you sure you want to delete this post?"
+				confirmLabel="Logout"
 			/>
 		</header>
 	);

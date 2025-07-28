@@ -12,7 +12,7 @@ const AuthContextProvider = ({ children }) => {
 		const fetchUser = async () => {
 			try {
 				const res = await API.get("/user/profile");
-				console.log(res);
+
 				setUser(res.data);
 			} catch (err) {
 				setUser(null);
@@ -47,9 +47,8 @@ const AuthContextProvider = ({ children }) => {
 	const register = async (formData) => {
 		try {
 			const res = await API.post("/auth/register", formData);
-			console.log("res", res);
+
 			localStorage.setItem("token", res.data.token);
-			// console.log(res.data.user);
 
 			setUser(res.data.user);
 			return { success: true };

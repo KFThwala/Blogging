@@ -51,7 +51,15 @@
     font-size: 1rem;
     padding: 0;
 }
+.link {
+    color: #f8fcfc;
+    text-decoration: none;
+}
 
+.link:hover {
+    text-decoration: underline;
+    color:#084bdc
+}
 .error {
     color: rgb(255, 60, 60);
     text-align: left;

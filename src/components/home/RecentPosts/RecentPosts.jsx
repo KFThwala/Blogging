@@ -41,9 +41,7 @@ function RecentPosts() {
 			) : (
 				<div className="posts-grid">
 					{posts.map((post) => (
-						<Link to={`/post/${post._id}`}>
-							<PostCard key={post._id} post={post} />
-						</Link>
+						<PostCard key={post._id} post={post} />
 					))}
 				</div>
 			)}

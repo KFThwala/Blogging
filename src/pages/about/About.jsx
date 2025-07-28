@@ -1,5 +1,6 @@
 import React from "react";
 import "./About.css";
+import devImage from "../../assets/kagiso.jpg";
 
 function About() {
 	return (
@@ -23,16 +24,11 @@ function About() {
 			</section>
 
 			<section className="about-section">
-				<h2>Meet the Team</h2>
-				<div className="team-grid">
+				<h2>Meet The Developer</h2>
+				<div>
 					<div className="team-card">
-						<img src="https://via.placeholder.com/120" alt="Team Member" />
-						<h4>Jane Doe</h4>
-						<p>Founder & CEO</p>
-					</div>
-					<div className="team-card">
-						<img src="https://via.placeholder.com/120" alt="Team Member" />
-						<h4>John Smith</h4>
+						<img src={devImage} alt="developer image" />
+						<h4>Kagiso Thwala</h4>
 						<p>Lead Developer</p>
 					</div>
 					{/* Add more team members as needed */}

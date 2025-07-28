@@ -23,7 +23,6 @@ function Signup() {
 	});
 
 	const handleChange = async (e) => {
-		console.log(e.target.value);
 		const { name, value } = e.target;
 		setFormData({ ...formData, [name]: value });
 	};
@@ -117,7 +116,10 @@ function Signup() {
 						{loading ? "Registering..." : "Register"}
 					</button>
 					<p>
-						Already have an account? <Link to="/login">Login</Link>
+						Already have an account?{" "}
+						<Link to="/login" className="link">
+							Login
+						</Link>
 					</p>
 				</form>
 			</div>
