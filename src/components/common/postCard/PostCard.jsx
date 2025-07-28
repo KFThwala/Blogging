@@ -1,12 +1,22 @@
 import React from "react";
 import { formatDistanceToNow } from "date-fns";
 import "./PostCard.css";
-import { CiHeart } from "react-icons/ci"; // outlined heart
+import { CiHeart, CiEdit } from "react-icons/ci"; // outlined heart
 import { FaHeart } from "react-icons/fa"; // filled heart
 import { Link } from "react-router-dom";
-
-function PostCard({ post }) {
+import { MdDeleteOutline } from "react-icons/md";
+import Button from "../button/Button";
+import { useNavigate } from "react-router-dom";
+function PostCard({
+	post,
+	showActions = false,
+	onEdit,
+	onDelete,
+	currentUserId,
+}) {
+	const navigate = useNavigate();
 	const { title, excerpt, image, author, createdAt, liked } = post;
+	const isOwner = currentUserId === author?._id;
 
 	return (
 		<article
@@ -44,6 +54,7 @@ function PostCard({ post }) {
 						? `${formatDistanceToNow(new Date(createdAt), { addSuffix: true })}`
 						: "Unknown date"}
 				</div>
+
 				<div className="post-interactions">
 					<p>
 						<span>{post.comments.length}</span>
@@ -53,6 +64,22 @@ function PostCard({ post }) {
 						{post.likes.length} {liked ? <FaHeart color="red" /> : <CiHeart />}
 					</span>
 				</div>
+
+				{/* 👇 Show edit/delete only for owner and if on profile page */}
+				{showActions && isOwner && (
+					<div className="post-actions">
+						<Button
+							label={<CiEdit />}
+							onClick={() => navigate(`/post/edit/${post._id}`)}
+							className="edit-post-btn"
+						/>
+						<button
+							onClick={() => onDelete(post._id)}
+							className="delete-post-btn">
+							<MdDeleteOutline />
+						</button>
+					</div>
+				)}
 			</div>
 		</article>
 	);

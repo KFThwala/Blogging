@@ -301,4 +301,103 @@
 }
 
 
+@media (max-width: 1024px) {
+  .post-details-wrapper {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .left-section,
+  .right-section {
+    margin: 0;
+    width: 100%;
+  }
+
+  .right-section {
+    margin-top: 2rem;
+    align-items: stretch;
+  }
+
+  .post-image {
+    height: 300px;
+  }
+
+  .markdown-body {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .post-author-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .post-author-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .post-author-avatar,
+  .post-author-avatar-fallback {
+    width: 32px;
+    height: 32px;
+  }
+
+  .post-category {
+    font-size: 1rem;
+    padding: 8px 16px;
+  }
+
+  .post-stats {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+
+  .like-btn {
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+
+  .comment-form textarea {
+    font-size: 0.9rem;
+  }
+
+  .comment-form button {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .post-details-wrapper {
+    padding: 0.5rem;
+  }
+
+  .markdown-body {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .reply-btn,
+  .delete-btn {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
+
+  .comment-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .avatar-sm {
+    width: 28px;
+    height: 28px;
+  }
+
+  .comment-form textarea {
+    font-size: 0.85rem;
+  }
+}
 

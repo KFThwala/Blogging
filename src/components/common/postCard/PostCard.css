@@ -179,6 +179,32 @@ text-align: center;
   color: red;
 }
 
+.post-actions {
+	display: flex;
+	justify-content: flex-end;
+	gap: 10px;
+	margin-top: 10px;
+}
+
+.edit-post-btn,
+.delete-post-btn {
+	padding: 4px 10px;
+	border: none;
+	cursor: pointer;
+	border-radius: 4px;
+}
+
+.edit-post-btn {
+	background-color: #007bff;
+	color: white;
+}
+
+.delete-post-btn {
+	background-color: #dc3545;
+	color: white;
+}
+
+
 
 @media (max-width: 768px) {
   .post-card {

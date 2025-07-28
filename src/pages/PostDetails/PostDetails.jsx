@@ -147,6 +147,8 @@ function PostDetails() {
 		return <div>Loading...</div>;
 	}
 
+	console.log("post", post);
+
 	return (
 		<>
 			<div className="post-details-wrapper">
@@ -158,9 +160,9 @@ function PostDetails() {
 
 					<div className="post-author-card">
 						<div className="post-author-info">
-							{post?.author?.profileImage ? (
+							{post?.author?.avatar ? (
 								<img
-									src={post.author.profileImage}
+									src={post.author.avatar}
 									alt={post.author.fullName}
 									className="post-author-avatar"
 								/>

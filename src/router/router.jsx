@@ -12,6 +12,7 @@ import Blogs from "../pages/blogs/Blogs";
 import About from "../pages/about/About";
 import Contact from "../pages/contact/Contact";
 import UserProfile from "../pages/userProfile/UserProfile";
+import EditPostForm from "../components/common/EditPostForm/EditPostForm.jsx";
 
 const ProtectedLayout = () => (
 	<ProtectedRoute>
@@ -68,6 +69,7 @@ const router = createBrowserRouter([
 				path: "/profile/:id",
 				element: <UserProfile />,
 			},
+			{ path: "/post/edit/:id", element: <EditPostForm /> },
 		],
 	},
 ]);

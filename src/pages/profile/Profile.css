@@ -139,32 +139,29 @@
   padding: 0 20px;
 }
 
-.post-with-actions {
-	position: relative;
-	margin-bottom: 1rem;
+.post-actions {
+	display: flex;
+	justify-content: space-between;
+	padding: 0.5rem 1rem;
+	margin-top: 0.5rem;
+}
+
+.edit-post-btn,
+.delete-post-btn {
+	padding: 0.4rem 0.8rem;
+	border: none;
+	cursor: pointer;
+	font-size: 0.9rem;
+	border-radius: 4px;
+}
+
+.edit-post-btn {
+	background-color: #007bff;
+	color: white;
 }
 
 .delete-post-btn {
-	background-color: #e74c3c;
+	background-color: #dc3545;
 	color: white;
-	margin-top: 0.5rem;
-	border: none;
-	padding: 0.5rem 1rem;
-	cursor: pointer;
 }
 
-
-.delete-button {
-  margin-top: 5px;
-  padding: 8px 14px;
-  color: rgb(241, 93, 93);
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-  background-color: transparent;
-}
-
-.delete-button:hover {
- 
-  color: #fb0303;
-}

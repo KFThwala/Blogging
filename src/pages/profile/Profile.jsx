@@ -211,14 +211,14 @@ function Profile() {
 				) : (
 					<div className="posts-grid">
 						{posts.map((post) => (
-							<div key={post._id} className="post-with-actions">
-								<PostCard post={post} />
-								<Button
-									label="Delete"
-									onClick={() => openDeletePostModal(post._id)}
-									className="delete-post-btn"
-								/>
-							</div>
+							<PostCard
+								key={post._id}
+								post={post}
+								showActions={true}
+								currentUserId={user?._id} // Replace `user` with your logged-in user
+								onEdit={() => openEditPostModal(post)}
+								onDelete={() => openDeletePostModal(post._id)}
+							/>
 						))}
 					</div>
 				)}
