@@ -4,6 +4,7 @@ import axios from 'axios';
 const API = axios.create({
 
   baseURL: 'https://bloggin-backend-c4l0.onrender.com/api',
+  // baseURL: "http://localhost:3000/api",
   
 });
 

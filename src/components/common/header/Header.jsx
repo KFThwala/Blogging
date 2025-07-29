@@ -19,16 +19,13 @@ function Header() {
 	const [showModal, setShowModal] = useState(false);
 	const navigate = useNavigate();
 
-	const handleLogout = () => {
-		logout();
-		navigate("/login");
-	};
-
 	const handleLogoutConfirm = () => {
 		logout();
 		setShowModal(false);
 		navigate("/login");
 	};
+
+	console.log(user.avatar);
 
 	return (
 		<header className="header">
@@ -96,9 +93,9 @@ function Header() {
 			)}
 			<ConfirmModal
 				isOpen={showModal}
-				onCancel={() => setShowConfirmModal(false)}
+				onCancel={() => setShowModal(false)}
 				onConfirm={handleLogoutConfirm}
-				title="Are you sure you want to delete this post?"
+				title="Are you sure you want to logout?"
 				confirmLabel="Logout"
 			/>
 		</header>
