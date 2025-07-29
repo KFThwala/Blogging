@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAuth } from "../../../context/authContext";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
 	const { login } = useAuth();
@@ -12,6 +13,8 @@ function Login() {
 		email: "",
 		password: "",
 	});
+
+	const navigate = useNavigate();
 
 	const [errors, setErrors] = useState({
 		email: "",
@@ -58,7 +61,7 @@ function Login() {
 		try {
 			const response = await login(formData);
 			if (response.success) {
-				window.location.href = "/home";
+				navigate("/home");
 			} else {
 				toast.error(response.message || "Login failed!");
 			}

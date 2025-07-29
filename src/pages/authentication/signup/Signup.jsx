@@ -62,6 +62,7 @@ function Signup() {
 		if (!validate()) return;
 
 		try {
+			setLoading(true);
 			const result = await register(formData);
 
 			if (result.success) {
@@ -74,6 +75,8 @@ function Signup() {
 			toast.error("Registration failed!");
 			console.error(error);
 		}
+
+		setLoading(false);
 	};
 	return (
 		<div className="container">
