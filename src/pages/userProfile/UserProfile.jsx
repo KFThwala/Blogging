@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import API from "../../api/axios";
 import PostCard from "../../components/common/postCard/PostCard";
 import "./UserProfile.css";
+import HomeButton from "../../components/common/homeButton/HomeButton";
 
 function UserProfile() {
 	const { id } = useParams(); // userId from URL
@@ -34,42 +35,49 @@ function UserProfile() {
 	if (!user) return <p style={{ textAlign: "center" }}>User not found.</p>;
 
 	return (
-		<div className="profile-container">
-			<div className="banner">
-				<div className="banner-top"></div>
-				<div className="banner-bottom">
-					<div className="profile-info">
-						<span className="profile-name">{user.fullName}</span>
-						<span className="profile-email">{user.email}</span>
-						<p className="profile-bio">
-							BIO{user.bio === "" ? ": EMPTY" : ": " + user.bio || ""}
-						</p>
+		<>
+			<HomeButton />
+			<div className="profile-container">
+				<div className="banner">
+					<div className="banner-top"></div>
+					<div className="banner-bottom">
+						<div className="profile-info">
+							<span className="profile-name">{user.fullName}</span>
+							<span className="profile-email">{user.email}</span>
+							<p className="profile-bio">
+								BIO{user.bio === "" ? ": EMPTY" : ": " + user.bio || ""}
+							</p>
+						</div>
+					</div>
+					<div className="avatar-wrapper">
+						{user.avatar ? (
+							<img
+								className="avatar-img"
+								src={user.avatar}
+								alt={user.fullName}
+							/>
+						) : (
+							<div className="avatar-fallback">
+								{user?.fullName?.[0]?.toUpperCase()}
+							</div>
+						)}
 					</div>
 				</div>
-				<div className="avatar-wrapper">
-					{user.avatar ? (
-						<img className="avatar-img" src={user.avatar} alt={user.fullName} />
+
+				<div className="user-posts-section">
+					<h2 className="posts-title">POSTS</h2>
+					{posts.length === 0 ? (
+						<p>No posts yet.</p>
 					) : (
-						<div className="avatar-fallback">
-							{user?.fullName?.[0]?.toUpperCase()}
+						<div className="posts-grid">
+							{posts.map((post) => (
+								<PostCard key={post._id} post={post} />
+							))}
 						</div>
 					)}
 				</div>
 			</div>
-
-			<div className="user-posts-section">
-				<h2 className="posts-title">POSTS</h2>
-				{posts.length === 0 ? (
-					<p>No posts yet.</p>
-				) : (
-					<div className="posts-grid">
-						{posts.map((post) => (
-							<PostCard key={post._id} post={post} />
-						))}
-					</div>
-				)}
-			</div>
-		</div>
+		</>
 	);
 }
 

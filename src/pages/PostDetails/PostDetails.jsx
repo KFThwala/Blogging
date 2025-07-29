@@ -8,6 +8,7 @@ import { useAuth } from "../../context/authContext";
 import TrendingPosts from "../../components/common/TrendingPosts/TrendingPosts";
 import { useNavigate } from "react-router-dom";
 import LikeButton from "../../components/common/LikeButton/LikeButton";
+import HomeButton from "../../components/common/homeButton/HomeButton";
 
 function PostDetails() {
 	const { id } = useParams();
@@ -151,6 +152,7 @@ function PostDetails() {
 
 	return (
 		<>
+			<HomeButton />
 			<div className="post-details-wrapper">
 				<div className="left-section">
 					<span className="post-category">
