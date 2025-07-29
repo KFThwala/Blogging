@@ -126,12 +126,6 @@
   background-color: #c9aeae;
 }
 
-.posts-title {
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  text-align: center;
-}
-
 .posts-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

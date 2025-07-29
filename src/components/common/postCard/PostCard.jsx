@@ -51,17 +51,25 @@ function PostCard({
 
 				<div className="post-timespan">
 					{createdAt
-						? `${formatDistanceToNow(new Date(createdAt), { addSuffix: true })}`
+						? `${formatDistanceToNow(new Date(createdAt), {
+								addSuffix: true,
+								includeSeconds: true,
+						  })}`.replace(/^about /, "")
 						: "Unknown date"}
 				</div>
 
 				<div className="post-interactions">
 					<p>
 						<span>{post.comments.length}</span>
-						<span>comment</span>
+						<span>💬</span>
 					</p>
 					<span className="post-likes">
-						{post.likes.length} {liked ? <FaHeart color="red" /> : <CiHeart />}
+						{post.likes.length}
+						{liked ? (
+							<FaHeart color="red" size={18} style={{ marginLeft: 4 }} />
+						) : (
+							<CiHeart color="#fff" size={18} style={{ marginLeft: 4 }} />
+						)}
 					</span>
 				</div>
 

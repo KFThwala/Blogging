@@ -39,14 +39,19 @@
 	width: 100%;
 	max-width: 300px;
 	gap: 1rem;
-	color: white;
 }
 
 .signup-form input {
-	padding: 0.75rem;
-	border: none;
-	border-radius: 5px;
-	outline: none;
+    all: unset; /* Removes all default styles */
+    padding: 0.75rem !important; /* Force padding */
+    width: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+	color:#000a08;
+    background: white; /* Ensure background is white */
+    margin: 0 !important; /* Remove any default margins */
 }
 
 .signup-form button {

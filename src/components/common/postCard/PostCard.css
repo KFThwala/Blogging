@@ -1,6 +1,6 @@
 .post-card {
   position: relative;
-  max-width: 700px;
+  width: 100%;
   height: 220px;
   background-size: cover;
   background-position: center;
@@ -9,78 +9,69 @@
   color: white;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
+  justify-content: space-between;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.post-card:hover {
-  box-shadow: 0 6px 15px rgba(0,0,0,0.5);
-  transform: translateY(-3px);
-}
-
 .post-overlay-link {
-  width: 100%;
-  padding: 16px;
-  height: 110px;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(4px);
-  text-decoration: none;
-  color: inherit;
   flex-grow: 1;
   display: flex;
-  flex-direction: column;
-text-align: center;
-  /* justify-content: flex-end; */
+  padding: 16px;
+  text-decoration: none;
+  color: inherit;
 }
 
 .post-overlay {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 8px;
+  justify-content: flex-end;
+  background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0.5) 50%, transparent 100%);
+  padding-bottom: 10px;
 }
 
 .post-title {
-  margin: 0;
-  font-size: 1.2rem;
+  font-size: 1.25rem;
   font-weight: bold;
-  line-height: 1.4;
+  line-height: 1.3;
+  margin: 0 0 8px 0;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
   word-break: break-word;
-  white-space: normal;
-  overflow: visible;
-  text-overflow: clip;
-  display: block;
+  
+  /* Force exactly two lines */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: calc(1.3em * 2); /* line-height * number of lines */
+  min-height: calc(1.3em * 2);
+  max-height: calc(1.3em * 2);
 }
 
 .post-excerpt {
   margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2; /* clamp to 2 lines */
-  overflow: hidden;
-  width: 100%;
+  font-size: 0.9rem;
+  line-height: 1.4;
   opacity: 0.9;
-  max-height: 3em; /* fallback */
+  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: calc(1.4em * 2); /* line-height * number of lines */
 }
 
 .post-meta {
   display: flex;
-  justify-content: space-between; /* better spacing between groups */
+  justify-content: space-between;
   align-items: center;
-  padding: 16px 20px;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: #eee;
-  width: 100%;
+  padding: 12px 16px; /* Adjusted padding */
+  background-color: rgba(20, 20, 20, 0.7);
+  width: calc(100% - 32px); /* Compensates for horizontal padding */
+  margin: 0 auto; /* Centers the element */
   font-size: 0.85rem;
-  gap: 16px;
-  flex-wrap: wrap; /* allows wrapping on smaller widths */
-  box-sizing: border-box;
+  gap: 12px;
 }
 
 .author-info {
@@ -140,7 +131,7 @@ text-align: center;
   gap: 16px;
   font-size: 0.85rem;
   color: #ddd;
-  flex-shrink: 0;
+  /* flex-shrink: 0; */
 }
 
 .post-interactions p {
@@ -161,22 +152,22 @@ text-align: center;
 }
 
 .post-likes {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 6px;
-  cursor: pointer;
-  user-select: none;
-  color: #ddd;
+  gap: 4px;
+  color: #fff;
   font-weight: 600;
 }
 
 .post-likes svg {
   width: 18px;
   height: 18px;
+  vertical-align: middle;
+  flex-shrink: 0;
 }
 
-.post-likes svg[fill="red"] {
-  color: red;
+.post-likes svg[color="red"] {
+  color: red !important;
 }
 
 .post-actions {

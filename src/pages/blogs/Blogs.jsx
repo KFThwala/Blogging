@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import API from "../../api/axios";
 import PostCard from "../../components/common/postCard/PostCard";
 import "./Blogs.css";
 import SearchBar from "../../components/home/SearchBar/SearchBar";
 import SkeletonPostCard from "../../components/common/SkeletonPostCard/SkeletonPostCard";
-import { Link } from "react-router-dom";
 
 function Blogs() {
+	const navigate = useNavigate();
 	const [posts, setPosts] = useState([]);
 	const [loading, setLoading] = useState(true);
 	const [page, setPage] = useState(1);
 	const [totalPages, setTotalPages] = useState(1);
-
 	const [searchQuery, setSearchQuery] = useState("");
 	const [debouncedSearch, setDebouncedSearch] = useState(searchQuery);
 
@@ -19,10 +19,10 @@ function Blogs() {
 	useEffect(() => {
 		const handler = setTimeout(() => {
 			setDebouncedSearch(searchQuery);
-			setPage(1); // Reset page on search change
-		}, 1000); // 500ms delay
+			setPage(1);
+		}, 1000);
 
-		return () => clearTimeout(handler); // Clear on cleanup or next effect run
+		return () => clearTimeout(handler);
 	}, [searchQuery]);
 
 	useEffect(() => {
@@ -55,7 +55,6 @@ function Blogs() {
 			<div className="blogs-container">
 				<h2>All Blog Posts</h2>
 				<div className="post-grid">
-					{/* Render multiple skeleton cards */}
 					{Array.from({ length: 6 }).map((_, idx) => (
 						<SkeletonPostCard key={idx} />
 					))}
@@ -65,20 +64,21 @@ function Blogs() {
 	}
 
 	return (
-		<>
+		<div className="blogs-page">
 			<SearchBar query={searchQuery} onSearch={handleSearch} />
 
 			<div className="blogs-container">
 				<h2>All Blog Posts</h2>
 				<div className="post-grid">
 					{posts.map((post) => (
-						<Link to={`/post/${post._id}`}>
-							<PostCard key={post._id} post={post} />
-						</Link>
+						<PostCard
+							key={post._id}
+							post={post}
+							onClick={() => navigate(`/post/${post._id}`)}
+						/>
 					))}
 				</div>
 
-				{/* Pagination Controls */}
 				<div className="pagination">
 					<button
 						onClick={() => setPage((p) => Math.max(p - 1, 1))}
@@ -95,7 +95,7 @@ function Blogs() {
 					</button>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 }
 

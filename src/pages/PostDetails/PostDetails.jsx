@@ -148,8 +148,6 @@ function PostDetails() {
 		return <div>Loading...</div>;
 	}
 
-	console.log("post", post);
-
 	return (
 		<>
 			<HomeButton />

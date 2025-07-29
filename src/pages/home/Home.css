@@ -8,12 +8,12 @@
 
 /* Main content takes up more space */
 .mainContent {
-  flex: 1;
+  flex: 2;
 }
 
 /* Sidebar */
 .asideContent {
-  flex: 2;
+  flex: 1;
   border-left: 1px solid #ddd;
   padding-left: 20px;
 }

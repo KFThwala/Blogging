@@ -25,14 +25,14 @@ function TrendingPosts() {
 
 	return (
 		<div className="right-section">
-			<h2 className="trending">🔥Trending</h2>
+			<h2 className="trending">🔥 Trending</h2>
 
 			{loading ? (
-				<ul className="trending-list">
+				<div className="trending-list">
 					{Array.from({ length: 3 }).map((_, i) => (
 						<SkeletonSuggestedPost key={i} />
 					))}
-				</ul>
+				</div>
 			) : trendingPosts.length > 0 ? (
 				<ul className="trending-list">
 					{trendingPosts.map((post) => (

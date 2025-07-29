@@ -226,7 +226,6 @@ function Profile() {
 									post={post}
 									showActions={true}
 									currentUserId={user?._id} // Replace `user` with your logged-in user
-									onEdit={() => openEditPostModal(post)}
 									onDelete={() => openDeletePostModal(post._id)}
 								/>
 							))}

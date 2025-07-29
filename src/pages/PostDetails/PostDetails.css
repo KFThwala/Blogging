@@ -40,7 +40,7 @@
 
 .right-section {
     flex: 1;
-    margin-left: 20px;
+   margin: 0 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -48,7 +48,7 @@
     height: 100%;
 	padding-bottom: 2rem;
 	border-radius: 10px;
-	background-color: beige;
+	background-color: beige
 
 }
 
@@ -313,10 +313,6 @@
     width: 100%;
   }
 
-  .right-section {
-    margin-top: 2rem;
-    align-items: stretch;
-  }
 
   .post-image {
     height: 300px;
