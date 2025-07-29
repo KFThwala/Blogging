@@ -25,8 +25,6 @@ function Header() {
 		navigate("/login");
 	};
 
-	console.log(user.avatar);
-
 	return (
 		<header className="header">
 			<Link to="/" className="logo">

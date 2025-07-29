@@ -42,7 +42,7 @@ function Landing() {
 				</div>
 			</section>
 			<FeaturesSection />
-			<RecentPosts />
+			{/* <RecentPosts /> */}
 			<Footer />
 		</div>
 	);
