@@ -1,7 +1,10 @@
 .post-card {
   position: relative;
   width: 100%;
-  height: 220px;
+  max-height: 250px; /* Changed from fixed height */
+  height: auto;
+  aspect-ratio: 3/4; /* Better for mobile - adjust as needed */
+  min-width: 0; /* Crucial for flex/grid children */
   background-size: cover;
   background-position: center;
   border-radius: 8px;
@@ -11,15 +14,15 @@
   flex-direction: column;
   justify-content: space-between;
   box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  transition: all 0.3s ease;
 }
 
 .post-overlay-link {
   flex-grow: 1;
   display: flex;
-  padding: 16px;
+  padding: 12px;
   text-decoration: none;
   color: inherit;
+  min-height: 0; /* Allows proper shrinking */
 }
 
 .post-overlay {
@@ -32,34 +35,25 @@
 }
 
 .post-title {
-  font-size: 1.25rem;
+  font-size: clamp(0.9rem, 4vw, 1.25rem); /* Responsive font */
   font-weight: bold;
   line-height: 1.3;
-  margin: 0 0 8px 0;
+  margin: 0 0 4px 0;
   text-shadow: 0 1px 3px rgba(0,0,0,0.8);
-  word-break: break-word;
-  
-  /* Force exactly two lines */
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  height: calc(1.3em * 2); /* line-height * number of lines */
-  min-height: calc(1.3em * 2);
-  max-height: calc(1.3em * 2);
 }
 
 .post-excerpt {
-  margin: 0;
-  font-size: 0.9rem;
+  font-size: clamp(0.7rem, 3vw, 0.9rem); /* Responsive font */
   line-height: 1.4;
   opacity: 0.9;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.8);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  height: calc(1.4em * 2); /* line-height * number of lines */
 }
 
 
@@ -73,7 +67,7 @@
   margin: 0 auto;
   font-size: 0.85rem;
   gap: 12px;
-  flex-wrap: nowrap; /* prevent wrapping of children */
+  flex-wrap: wrap; /* prevent wrapping of children */
 }
 
 
@@ -205,7 +199,7 @@
 
 
 
-/* @media (max-width: 768px) {
+@media (max-width: 768px) {
   .post-card {
     height: 200px;
     max-width: 100%;
@@ -253,4 +247,4 @@
     display: flex;
     align-items: flex-start;
   }
-} */
+}
