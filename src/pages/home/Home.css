@@ -2,13 +2,15 @@
   display: flex;
   gap: 24px;
   padding: 20px;
-  height: 100vh;
+  min-height: 100vh;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 /* Main content takes up more space */
 .mainContent {
   flex: 2;
+  min-width: 0; /* Prevent overflow */
 }
 
 /* Sidebar */
@@ -16,6 +18,7 @@
   flex: 1;
   border-left: 1px solid #ddd;
   padding-left: 20px;
+  min-width: 0;
 }
 
 /* Floating button to create a blog */
@@ -42,16 +45,32 @@
   background-color: #0056b3;
 }
 
-/* 🔽 Responsive Design */
-@media (max-width: 1024px) {
+/* 🔽 Tablet and below */
+@media screen and (max-width: 1024px) {
   .homeContainer {
     flex-direction: column;
-    height: auto;
   }
 
+  .mainContent,
   .asideContent {
+    width: 100%;
     border-left: none;
     padding-left: 0;
-    margin-top: 20px;
+  }
+}
+
+/* 🔽 Mobile */
+@media screen and (max-width: 600px) {
+  .floating-button {
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+  }
+
+  .homeContainer {
+    padding: 12px;
+    gap: 16px;
   }
 }

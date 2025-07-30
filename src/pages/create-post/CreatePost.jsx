@@ -67,7 +67,7 @@ const CreatePostForm = () => {
 	};
 
 	return (
-		<div className="create_post_wrapper">
+		<div className="container">
 			<form onSubmit={handleSubmit} encType="multipart/form-data">
 				<h2>Create New Post</h2>
 

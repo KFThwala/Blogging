@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body{
   margin: 0;
   padding: 0;
@@ -14,6 +18,7 @@ body{
   flex-direction: column;
   min-height: 100vh;  /* Full viewport height */
 }
+
 
 /* Main content area should grow to fill remaining space */
 .content-wrap {

@@ -57,6 +57,7 @@ function Profile() {
 
 	const handleSave = async () => {
 		try {
+			setLoading(true);
 			await API.put(
 				"/user/profile-edit",
 				{
@@ -82,9 +83,9 @@ function Profile() {
 			} else {
 				alert("❌ " + message);
 			}
-
-			console.error("Update failed:", error);
 		}
+
+		setLoading(false);
 	};
 
 	const handleDeletePost = async (postId) => {
@@ -159,7 +160,9 @@ function Profile() {
 										onChange={(e) => setBioInput(e.target.value)}
 										placeholder="Bio"
 									/>
-									<button onClick={handleSave}>Save</button>
+									<button onClick={handleSave}>
+										{loading ? "Saving..." : "Save"}
+									</button>
 									<button onClick={() => setEditMode(false)}>Cancel</button>
 								</>
 							) : (
@@ -225,7 +228,7 @@ function Profile() {
 									key={post._id}
 									post={post}
 									showActions={true}
-									currentUserId={user?._id} // Replace `user` with your logged-in user
+									currentUserId={user?._id}
 									onDelete={() => openDeletePostModal(post._id)}
 								/>
 							))}

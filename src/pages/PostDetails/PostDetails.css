@@ -1,13 +1,13 @@
 .post-details-wrapper {
-    display: flex;
-   
-    margin: 20px;
-    padding: 20px;
-   background-color: #fffefc;
-
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1)
-   
+  display: flex;
+  flex-direction: row;
+  margin: 20px auto; /* Centered with auto margins */
+  padding: 20px;
+  background-color: #fffefc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 1450px; /* Added max-width for larger screens */
+  width: calc(100% - 40px); /* Account for margins */
 }
 
 .post-category {

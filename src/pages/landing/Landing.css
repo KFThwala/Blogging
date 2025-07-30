@@ -1,4 +1,3 @@
-
 /* Container wraps the whole landing section */
 .container_hero {
 	width: 100%;
@@ -6,25 +5,86 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	position: relative; /* required for absolutely positioning the scroll cue */
-	padding: 0 1rem;
-}
-
-/* Main content section */
-.content {
+	position: relative;
+	padding: 0 1.5rem; /* Increased side padding */
+	box-sizing: border-box;
+  }
+  
+  /* Main content section */
+  .content {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	gap: 4rem;
 	flex-wrap: wrap;
 	max-width: 1200px;
-    margin: 20 auto;
 	width: 100%;
-	/* padding: 3rem; */
-}
-
-/* Position the scroll cue at bottom center of hero */
-.scroll-mouse-container {
+	margin: 0 auto; /* Fixed margin syntax */
+	padding: 3rem 2rem; /* Added equal padding */
+  }
+  
+  /* Left column: text */
+  .left_content {
+	flex: 1;
+	min-width: 300px;
+	padding: 0 1rem; /* Added equal side padding */
+  }
+  
+  .left_content h1 {
+	font-size: 2.75rem;
+	color: #1E40AF;
+	margin-bottom: 1rem;
+	line-height: 1.2;
+  }
+  
+  .left_content p {
+	font-size: 1.125rem;
+	color: #4B5563;
+	line-height: 1.6;
+	max-width: 500px;
+  }
+  
+  /* Right column: image */
+  .right_content {
+	flex: 1;
+	min-width: 300px;
+	padding: 0 1rem; /* Added equal side padding */
+	display: flex;
+	justify-content: center;
+  }
+  
+  .landing_image {
+	max-width: 100%;
+	max-height: 500px;
+	height: auto;
+	border-radius: 12px;
+	object-fit: contain; /* Changed to contain for better control */
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Button styles */
+  .get_started_button {
+	display: inline-block;
+	background-color: #fff;
+	color: #000a08;
+	border: 2px solid #1E40AF;
+	padding: 0.75rem 1.5rem;
+	margin-top: 20px;
+	border-radius: 4px;
+	font-size: 1rem;
+	font-weight: 500;
+	cursor: pointer;
+	text-decoration: none;
+	transition: all 0.3s ease;
+  }
+  
+  .get_started_button:hover {
+	background-color: #1E40AF;
+	color: white;
+  }
+  
+  /* Scroll cue styles (unchanged) */
+  .scroll-mouse-container {
 	position: absolute;
 	bottom: 100px;
 	left: 50%;
@@ -56,7 +116,6 @@
 	transform: translateX(-50%);
 	animation: scrollAnim 2s infinite;
 }
-
 @keyframes scrollAnim {
 	0% {
 		opacity: 0;
@@ -90,67 +149,72 @@
 	}
 }
 
-
-/* Left column: text */
-.left_content {
-	flex: 1;
-	min-width: 300px;
-}
-
-.left_content h1 {
-	font-size: 2.75rem;
-	color: #1E40AF;
-	margin-bottom: 1rem;
-}
-
-.left_content p {
-	font-size: 1.125rem;
-	color: #4B5563;
-}
-
-/* Right column: image */
-.right_content {
-	flex: 1;
-	min-width: 300px;
-}
-
-.landing_image {
-	max-width: 100%;
-	height: auto;
-	border-radius: 12px;
-	object-fit: cover;
-	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-
-.get_started_button {
-    color:  #000a08;
-    border: none;
-    padding: 0.75rem 1.5rem;
-	margin-top: 20px;
-    border-radius: 4px;
-    font-size: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-    transition: background-color 0.3s ease;
-}
-
-.get_started_button:hover {
-    background-color: #1E40AF;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
+  
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
 	.content {
-		flex-direction: column-reverse;
-		text-align: center;
-		padding: 2rem;
+	  gap: 3rem;
+	  padding: 2rem;
 	}
-
+	
 	.left_content h1 {
-		font-size: 2rem;
+	  font-size: 2.5rem;
 	}
-
+  }
+  
+  @media (max-width: 768px) {
+	.content {
+	  flex-direction: column-reverse;
+	  text-align: center;
+	  gap: 2rem;
+	  padding: 1.5rem;
+	}
+	
+	.left_content, .right_content {
+	  padding: 0;
+	  width: 100%;
+	}
+	
+	.left_content h1 {
+	  font-size: 2rem;
+	  margin-top: 1rem;
+	}
+	
 	.left_content p {
-		font-size: 1rem;
+	  font-size: 1rem;
+	  margin: 0 auto;
 	}
-}
+	
+	.get_started_button {
+	  margin: 20px auto 0;
+	}
+	.scroll-mouse-container {
+		display: none;
+	}
+	
+	.landing_image {
+	  max-height: 400px;
+	}
+  }
+  
+  @media (max-width: 480px) {
+	.container_hero {
+	  padding: 0 1rem;
+	}
+	
+	.content {
+	  padding: 1rem;
+	}
+	
+	.left_content h1 {
+	  font-size: 1.75rem;
+	}
+	
+	.landing_image {
+	  max-height: 300px;
+	}
+	
+	.scroll-mouse-container {
+	  bottom: 60px;
+	}
+  }

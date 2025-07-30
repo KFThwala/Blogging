@@ -1,12 +1,13 @@
 import React from "react";
 import { formatDistanceToNow } from "date-fns";
 import "./PostCard.css";
-import { CiHeart, CiEdit } from "react-icons/ci"; // outlined heart
-import { FaHeart } from "react-icons/fa"; // filled heart
+import { CiHeart, CiEdit } from "react-icons/ci";
+import { FaRegComment } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { MdDeleteOutline } from "react-icons/md";
 import Button from "../button/Button";
 import { useNavigate } from "react-router-dom";
+
 function PostCard({
 	post,
 	showActions = false,
@@ -20,7 +21,7 @@ function PostCard({
 
 	return (
 		<article
-			className="post-card"
+			className={`post-card ${showActions ? "show-actions" : ""}`}
 			style={{
 				backgroundImage: `url(${
 					image || "https://via.placeholder.com/400x200?text=No+Image"
@@ -34,57 +35,66 @@ function PostCard({
 			</Link>
 
 			<div className="post-meta">
-				<Link to={`/profile/${author?._id}`} className="author-info">
-					{author?.avatar ? (
-						<img
-							src={author.avatar}
-							alt={author.fullName}
-							className="author-avatar"
-						/>
-					) : (
-						<div className="author-fallback-avatar">
-							{author?.fullName?.[0]?.toUpperCase() || "U"}
-						</div>
-					)}
-					<span className="author-name">{author?.fullName}</span>
-				</Link>
+				<div className="post-meta-left">
+					<div>
+						<Link to={`/profile/${author?._id}`} className="author-info">
+							{author?.avatar ? (
+								<img
+									src={author.avatar}
+									alt={author.fullName}
+									className="author-avatar"
+								/>
+							) : (
+								<div className="author-fallback-avatar">
+									{author?.fullName?.[0]?.toUpperCase() || "U"}
+								</div>
+							)}
+							<span className="author-name">{author?.fullName}</span>
+						</Link>
+					</div>
 
-				<div className="post-timespan">
-					{createdAt
-						? `${formatDistanceToNow(new Date(createdAt), {
-								addSuffix: true,
-								includeSeconds: true,
-						  })}`.replace(/^about /, "")
-						: "Unknown date"}
+					<div className="post-timespan">
+						{createdAt
+							? `${formatDistanceToNow(new Date(createdAt), {
+									addSuffix: true,
+									includeSeconds: true,
+							  })}`.replace(/^about /, "")
+							: "Unknown date"}
+					</div>
+
+					<div className="post-interactions">
+						<p className="post-comments">
+							<span>
+								<FaRegComment />
+							</span>
+							<span>{post.comments.length}</span>
+						</p>
+						<p className="post-likes">
+							<span>
+								<CiHeart color="red" size={12} style={{ marginLeft: 2 }} />
+							</span>
+							<span>{post.likes.length}</span>
+						</p>
+					</div>
 				</div>
 
-				<div className="post-interactions">
-					<p>
-						<span>{post.comments.length}</span>
-						<span>💬</span>
-					</p>
-					<span className="post-likes">
-						{post.likes.length}
-						{liked ? (
-							<FaHeart color="red" size={18} style={{ marginLeft: 4 }} />
-						) : (
-							<CiHeart color="#fff" size={18} style={{ marginLeft: 4 }} />
-						)}
-					</span>
-				</div>
-
-				{/* 👇 Show edit/delete only for owner and if on profile page */}
-				{showActions && isOwner && (
+				{isOwner && (
 					<div className="post-actions">
-						<Button
-							label={<CiEdit />}
-							onClick={() => navigate(`/post/edit/${post._id}`)}
-							className="edit-post-btn"
-						/>
 						<button
-							onClick={() => onDelete(post._id)}
+							onClick={(e) => {
+								e.preventDefault();
+								navigate(`/post/edit/${post._id}`);
+							}}
+							className="edit-post-btn">
+							<CiEdit size={18} />
+						</button>
+						<button
+							onClick={(e) => {
+								e.preventDefault();
+								onDelete(post._id);
+							}}
 							className="delete-post-btn">
-							<MdDeleteOutline />
+							<MdDeleteOutline size={18} />
 						</button>
 					</div>
 				)}

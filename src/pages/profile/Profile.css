@@ -1,8 +1,15 @@
 .profile-container {
-  display: flex;
-  flex-direction: column;
-  background-color: #fffefc;
-  padding: 10px 20px 60px 20px;
+  
+    display: flex;
+    flex-direction: row;
+    margin: 0 auto; /* Centered with auto margins */
+    padding: 20px;
+    background-color: #fffefc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 1450px; /* Added max-width for larger screens */
+    width: calc(100% - 40px); /* Account for margins */
+
 }
 
 .banner {
@@ -121,41 +128,23 @@
 }
 
 .user-posts-section {
-  margin-top: 2rem;
   padding: 40px 0 60px 0;
   background-color: #c9aeae;
+  width: 90%;
+  margin: 2rem auto;
+  overflow-x: hidden;
 }
 
 .posts-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 1rem;
   padding: 0 20px;
 }
 
-.post-actions {
-	display: flex;
-	justify-content: space-between;
-	padding: 0.5rem 1rem;
-	margin-top: 0.5rem;
-}
 
-.edit-post-btn,
-.delete-post-btn {
-	padding: 0.4rem 0.8rem;
-	border: none;
-	cursor: pointer;
-	font-size: 0.9rem;
-	border-radius: 4px;
-}
 
-.edit-post-btn {
-	background-color: #007bff;
-	color: white;
-}
 
-.delete-post-btn {
-	background-color: #dc3545;
-	color: white;
-}
+
+
 
