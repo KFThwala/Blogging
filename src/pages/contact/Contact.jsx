@@ -4,7 +4,7 @@ import "./Contact.css";
 function Contact() {
 	return (
 		<div className="contact-page">
-			<section className="contact-hero">
+			{/* <section className="contact-hero">
 				<h1>Contact</h1>
 				<p>
 					We'd love to hear from you. Reach out to us directly using the
@@ -38,7 +38,9 @@ function Contact() {
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> */}
+
+			<h1>Removed to comply with upwork policy</h1>
 		</div>
 	);
 }

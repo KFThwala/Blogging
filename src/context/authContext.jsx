@@ -1,9 +1,11 @@
 import { createContext, useEffect, useContext, useState } from "react";
 import API from "../api/axios";
 
+// Create the context
 export const AuthContext = createContext();
 
-const AuthContextProvider = ({ children }) => {
+// Export provider as a named export
+export const AuthProvider = ({ children }) => {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 
@@ -12,9 +14,8 @@ const AuthContextProvider = ({ children }) => {
 		const fetchUser = async () => {
 			try {
 				const res = await API.get("/user/profile");
-
 				setUser(res.data);
-			} catch (err) {
+			} catch {
 				setUser(null);
 			} finally {
 				setLoading(false);
@@ -22,9 +23,8 @@ const AuthContextProvider = ({ children }) => {
 		};
 
 		const token = localStorage.getItem("token");
-		if (token) {
-			fetchUser();
-		} else {
+		if (token) fetchUser();
+		else {
 			setLoading(false);
 			setUser(null);
 		}
@@ -47,9 +47,7 @@ const AuthContextProvider = ({ children }) => {
 	const register = async (formData) => {
 		try {
 			const res = await API.post("/auth/register", formData);
-
 			localStorage.setItem("token", res.data.token);
-
 			setUser(res.data.user);
 			return { success: true };
 		} catch (err) {
@@ -66,19 +64,11 @@ const AuthContextProvider = ({ children }) => {
 	};
 
 	return (
-		<AuthContext.Provider
-			value={{
-				user,
-				loading,
-				login,
-				register,
-				logout,
-			}}>
+		<AuthContext.Provider value={{ user, loading, login, register, logout }}>
 			{children}
 		</AuthContext.Provider>
 	);
 };
 
-export default AuthContextProvider;
-
+// Named hook export
 export const useAuth = () => useContext(AuthContext);
