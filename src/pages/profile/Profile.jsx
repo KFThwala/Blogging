@@ -6,6 +6,7 @@ import Button from "../../components/common/button/Button";
 import ConfirmModal from "../../components/common/confirmModal/ConfirmModal";
 import "./Profile.css";
 import HomeButton from "../../components/common/homeButton/HomeButton";
+import toast from "react-hot-toast";
 
 function Profile() {
 	const { user, token } = useAuth();
@@ -69,9 +70,9 @@ function Profile() {
 					headers: {
 						Authorization: `Bearer ${token}`,
 					},
-				}
+				},
 			);
-			alert("Profile updated!");
+			toast.success("Profile updated!");
 			window.location.reload();
 		} catch (error) {
 			const message =
@@ -79,9 +80,9 @@ function Profile() {
 				"Failed to update profile image might be too big";
 
 			if (message.toLowerCase().includes("file") && message.includes("2MB")) {
-				alert("❌ File too large. Maximum allowed size is 2MB.");
+				toast.error("❌ File too large. Maximum allowed size is 2MB.");
 			} else {
-				alert("❌ " + message);
+				toast.error("❌ " + message);
 			}
 		}
 
@@ -94,22 +95,22 @@ function Profile() {
 
 			setPosts((prev) => prev.filter((post) => post._id !== postId));
 			setShowDeletePostModal(false);
-			alert("Post deleted!");
+			toast.success("Post deleted!");
 		} catch (error) {
 			console.error("Failed to delete post:", error);
-			alert("Failed to delete post.");
+			toast.error("Failed to delete post.");
 		}
 	};
 
 	const handleDeleteAccount = async () => {
 		try {
 			await API.delete("/user/delete");
-			alert("Account deleted");
+			toast.success("Account deleted");
 			localStorage.clear();
 			window.location.href = "/";
 		} catch (error) {
 			console.error("Delete failed:", error.message);
-			alert("Failed to delete account");
+			toast.error("Failed to delete account");
 		}
 	};
 
@@ -160,10 +161,12 @@ function Profile() {
 										onChange={(e) => setBioInput(e.target.value)}
 										placeholder="Bio"
 									/>
-									<button onClick={handleSave}>
-										{loading ? "Saving..." : "Save"}
-									</button>
-									<button onClick={() => setEditMode(false)}>Cancel</button>
+									<div className="edit-buttons">
+										<button onClick={handleSave}>
+											{loading ? "Saving..." : "Save"}
+										</button>
+										<button onClick={() => setEditMode(false)}>Cancel</button>
+									</div>
 								</>
 							) : (
 								<>

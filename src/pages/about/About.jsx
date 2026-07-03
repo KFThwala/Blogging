@@ -6,32 +6,59 @@ function About() {
 	return (
 		<div className="about-page">
 			<section className="about-hero">
-				<h1>About Our Platform</h1>
+				<span className="about-badge">ABOUT US</span>
+
+				<h1>
+					A Place Where <span>Ideas</span> Become Stories
+				</h1>
+
 				<p>
-					We are a community-driven platform that empowers users to share ideas,
-					stories, and knowledge through beautifully written blog posts. Whether
-					you're a reader or a writer, you're welcome here.
+					Our blogging platform was built to give creators a beautiful place to
+					share knowledge, experiences, and inspiration. Whether you're writing
+					your first article or discovering your next favorite read, you're part
+					of our growing community.
 				</p>
 			</section>
 
-			<section className="about-section">
-				<h2>Our Mission</h2>
-				<p>
-					Our mission is to amplify voices and create a space where meaningful
-					content can be discovered and appreciated. We believe in creativity,
-					authenticity, and community.
-				</p>
+			<section className="about-content">
+				<div className="about-card">
+					<h2>Our Mission</h2>
+
+					<p>
+						We believe everyone has a story worth sharing. Our goal is to make
+						publishing simple, reading enjoyable, and connecting with
+						like-minded people effortless.
+					</p>
+				</div>
+
+				<div className="about-card">
+					<h2>What We Offer</h2>
+
+					<ul>
+						<li>Write and publish blog posts.</li>
+						<li>Explore articles across multiple categories.</li>
+						<li>Like, comment, and engage with writers.</li>
+						<li>Discover trending and featured content.</li>
+					</ul>
+				</div>
 			</section>
 
-			<section className="about-section">
-				<h2>Meet The Developer</h2>
-				<div>
-					<div className="team-card">
-						<img src={devImage} alt="developer image" />
-						<h4>Kagiso Thwala</h4>
-						<p>Lead Developer</p>
+			<section className="developer-section">
+				<div className="developer-card">
+					<img src={devImage} alt="Kagiso Thwala" />
+
+					<div className="developer-info">
+						<span className="developer-role">Lead Developer</span>
+
+						<h2>Kagiso Thwala</h2>
+
+						<p>
+							Hi! I'm Kagiso, a full-stack developer passionate about building
+							modern web applications that are fast, clean, and user-friendly.
+							This platform was designed from the ground up using the MERN stack
+							with the goal of creating a great blogging experience.
+						</p>
 					</div>
-					{/* Add more team members as needed */}
 				</div>
 			</section>
 		</div>

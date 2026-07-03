@@ -1,7 +1,7 @@
 // src/components/HomeButton.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { FaHome } from "react-icons/fa";
+import { IoMdHome } from "react-icons/io";
 import "./HomeButton.css";
 
 const HomeButton = ({ size = 24, color = "#333", className = "" }) => {
@@ -13,7 +13,7 @@ const HomeButton = ({ size = 24, color = "#333", className = "" }) => {
 
 	return (
 		<button onClick={handleClick} className="icon" aria-label="Go to home">
-			<FaHome size={size} color={color} />
+			<IoMdHome size={size} color={color} />
 		</button>
 	);
 };

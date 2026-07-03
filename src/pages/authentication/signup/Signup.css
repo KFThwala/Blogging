@@ -1,105 +1,198 @@
-/* Base styles */
+/* ==========================
+   PAGE
+========================== */
+
 .container {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  font-family: Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    font-family: "Inter", sans-serif;
+    background: #ffffff;
 }
 
-.left-side, 
-.right-side {
-  padding: 2rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
+/* ==========================
+   LEFT
+========================== */
 
 .left-side {
-  background-color: #f9fbfb;
-  flex: 1;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px;
+    background: #ffffff;
 }
+
+.left-side h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 18px;
+}
+
+.left-side p {
+    max-width: 420px;
+    text-align: center;
+    line-height: 1.8;
+    color: #6b7280;
+    font-size: 1.05rem;
+}
+
+/* ==========================
+   RIGHT
+========================== */
 
 .right-side {
-  background-color: #000a08;
-  flex: 1;
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 20%;
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: #f8fafc;
+
+    border-left: 1px solid #e5e7eb;
 }
+
+/* ==========================
+   FORM
+========================== */
 
 .signup-form {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  max-width: 400px;
-  gap: 1rem;
+    width: 100%;
+    max-width: 420px;
+
+    background: #ffffff;
+
+    padding: 40px;
+
+    border-radius: 20px;
+
+    box-shadow: 0 15px 45px rgba(15, 23, 42, .08);
+
+    display: flex;
+    flex-direction: column;
 }
+
+.signup-form h2 {
+    font-size: 2rem;
+    color: #111827;
+    margin-bottom: 30px;
+}
+
+/* ==========================
+   INPUTS
+========================== */
 
 .signup-form input {
-  all: unset;
-  padding: 0.75rem !important;
-  width: 100%;
-  box-sizing: border-box;
-  border: none;
-  border-radius: 5px;
-  outline: none;
-  color: #000a08;
-  background: white;
-  margin: 0 !important;
+    width: 100%;
+    box-sizing: border-box;
+
+    padding: 15px 18px;
+
+    margin-bottom: 18px;
+
+    border: 1px solid #d1d5db;
+
+    border-radius: 12px;
+
+    outline: none;
+
+    font-size: 15px;
+
+    background: #fff;
 }
 
+.signup-form input:focus {
+    border-color: #2563eb;
+
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, .12);
+}
+
+/* ==========================
+   BUTTON
+========================== */
+
 .signup-form button {
-  padding: 0.75rem;
-  background-color: #02c39a;
-  border: none;
-  color: white;
-  border-radius: 5px;
-  cursor: pointer;
-  font-weight: bold;
+    height: 54px;
+
+    border: none;
+
+    border-radius: 12px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 16px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    margin-top: 10px;
 }
 
 .signup-form button:hover {
-  background-color: #029e7c;
+    background: #1d4ed8;
 }
 
+/* ==========================
+   ERRORS
+========================== */
+
 .error {
-  color: #ff6b6b;
-  font-size: 0.8rem;
-  text-align: left;
-  margin-top: -0.5rem;
+    color: #ef4444;
+    font-size: .85rem;
+    margin-top: -10px;
+    margin-bottom: 12px;
+}
+
+/* ==========================
+   FOOTER
+========================== */
+
+.signup-form p {
+    margin-top: 24px;
+    text-align: center;
+    color: #6b7280;
 }
 
 .link {
-  color: #02c39a;
-  text-decoration: none;
-  font-weight: bold;
+    color: #2563eb;
+    text-decoration: none;
+    font-weight: 700;
 }
 
-/* Tablet and larger screens */
-@media (min-width: 768px) {
-  .container {
-    flex-direction: row;
-    height: 100vh;
-  }
-
-  .right-side {
-    border-top-left-radius: 20%;
-    border-bottom-left-radius: 0;
-  }
-
-  .left-side {
-    flex: 2;
-  }
-
-  .right-side {
-    flex: 1;
-  }
+.link:hover {
+    text-decoration: underline;
 }
 
-/* Larger desktop screens */
-@media (min-width: 1200px) {
-  .signup-form {
-    max-width: 350px;
-  }
+/* ==========================
+   RESPONSIVE
+========================== */
+
+@media (max-width: 900px) {
+
+    .container {
+        flex-direction: column;
+    }
+
+    .left-side {
+        padding: 60px 30px 20px;
+    }
+
+    .left-side h1 {
+        font-size: 2.3rem;
+        text-align: center;
+    }
+
+    .right-side {
+        padding: 40px 20px;
+        border-left: none;
+        border-top: 1px solid #e5e7eb;
+    }
+
+    .signup-form {
+        padding: 30px;
+    }
 }

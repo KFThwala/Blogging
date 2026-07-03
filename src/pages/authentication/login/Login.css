@@ -1,67 +1,203 @@
+/* ============================
+   PAGE
+============================ */
+
 .login_container {
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
-    /* padding: 2rem; */
-    /* background-color: #cbc5c5; */
+
+    padding: 30px;
+    background-color: #fff;
 }
+
+/* ============================
+   CARD
+============================ */
 
 .form_container {
-    background-color: #000a08;
-    max-width: 400px;
     width: 100%;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
+    max-width: 470px;
+
+    background: rgba(255,255,255,.08);
+
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+
+    border: 1px solid rgba(255,255,255,.15);
+
+    border-radius: 24px;
+
+    padding: 45px;
+
+    box-shadow:
+        0 20px 60px rgba(0,0,0,.25),
+        inset 0 1px 1px rgba(255,255,255,.1);
 }
 
-.form_container h2 {
-    margin-bottom: 1rem;
-    color: #fff;
-    font-size: 2rem;
-    font-weight: bold;
-}
+/* ============================
+   FORM
+============================ */
 
 .login_form {
     display: flex;
     flex-direction: column;
-    gap: 1rem;
 }
+
+.login_form h2 {
+    font-size: 2.3rem;
+    color: white;
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.login_form h2::after {
+    content: "Welcome back! Login to continue.";
+    display: block;
+
+    font-size: .95rem;
+    font-weight: 400;
+
+    color: rgba(255,255,255,.7);
+
+    margin-top: 8px;
+}
+
+/* ============================
+   INPUTS
+============================ */
 
 .login_form input {
-    padding: 0.5rem;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: 100%;
+
+    margin-top: 22px;
+
+    padding: 15px 18px;
+
+    border-radius: 14px;
+
+    border: 1px solid rgba(255,255,255,.15);
+
+    background: rgba(255,255,255,.08);
+
+    color: white;
+
+    font-size: 1rem;
+
+    outline: none;
+
+    transition: .3s;
 }
+
+.login_form input::placeholder {
+    color: rgba(255,255,255,.55);
+}
+
+.login_form input:focus {
+    border-color: #4f46e5;
+
+    background: rgba(255,255,255,.12);
+
+    box-shadow: 0 0 0 4px rgba(79,70,229,.18);
+}
+
+/* ============================
+   ERRORS
+============================ */
+
+.error {
+    color: #ffb4b4;
+
+    font-size: .85rem;
+
+    margin-top: 8px;
+
+    margin-left: 4px;
+}
+
+/* ============================
+   BUTTON
+============================ */
 
 .login_form button {
-    padding: 0.5rem 1rem;
-    background-color: #02c39a;
-    color: #fff;
+    margin-top: 30px;
+
+    height: 56px;
+
     border: none;
-    border-radius: 4px;
+
+    border-radius: 14px;
+
     cursor: pointer;
+
+    background: linear-gradient(
+        135deg,
+        #4f46e5,
+        #2563eb
+    );
+
+    color: white;
+
+    font-size: 1rem;
+
+    font-weight: 700;
+
+    transition: .3s;
 }
 
-.login_form p {
-    /* margin-top: 1rem; */
-    color: #fff;
-    font-size: 1rem;
-    padding: 0;
+.login_form button:hover {
+    transform: translateY(-3px);
+
+    box-shadow: 0 18px 35px rgba(79,70,229,.35);
 }
+
+.login_form button:active {
+    transform: scale(.98);
+}
+
+/* ============================
+   FOOTER
+============================ */
+
+.login_form p {
+    margin-top: 28px;
+
+    text-align: center;
+
+    color: rgba(255,255,255,.75);
+
+    font-size: .95rem;
+}
+
 .link {
-    color: #f8fcfc;
+    color: #60a5fa;
+
     text-decoration: none;
+
+    font-weight: 700;
 }
 
 .link:hover {
-    text-decoration: underline;
-    color:#084bdc
+    color: white;
 }
-.error {
-    color: rgb(255, 60, 60);
-    text-align: left;
-    font-size: 0.8rem;
+
+/* ============================
+   RESPONSIVE
+============================ */
+
+@media (max-width:600px) {
+
+    .login_container {
+        padding: 20px;
+    }
+
+    .form_container {
+        padding: 30px 24px;
+    }
+
+    .login_form h2 {
+        font-size: 2rem;
+    }
+
 }

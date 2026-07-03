@@ -2,11 +2,13 @@ import React from "react";
 import Header from "../../components/common/header/Header";
 import "./Landing.css";
 import Button from "../../components/common/button/Button";
-import FeaturesSection from "../../components/Landing/feature_section/FeatureSection";
+import AboutSection from "../../components/Landing/about_section/AboutSection";
 import SamplePostsSection from "../../components/Landing/samplePost/SamplePostSection";
 import Footer from "../../components/common/footer/Footer";
 import { Link } from "react-router-dom";
 import RecentPosts from "../../components/home/RecentPosts/RecentPosts";
+import Categories from "../../components/Landing/categories/Categories";
+import FeaturedPost from "../../components/Landing/featuredPost/featuredPost";
 
 function Landing() {
 	return (
@@ -41,8 +43,10 @@ function Landing() {
 					<p className="scroll-text">Scroll</p>
 				</div>
 			</section>
-			<FeaturesSection />
-			{/* <RecentPosts /> */}
+			<AboutSection />
+			<Categories />
+			<FeaturedPost />
+			<SamplePostsSection />
 			<Footer />
 		</div>
 	);

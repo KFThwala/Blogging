@@ -1,0 +1,291 @@
+/* =====================================================
+   CATEGORIES SECTION
+===================================================== */
+
+.categories-section {
+	max-width: 1400px;
+	margin: 100px auto;
+	padding: 80px 40px;
+
+	background: linear-gradient(
+		135deg,
+		#eef4ff 0%,
+		#f7f3ff 100%
+	);
+
+	border-radius: 32px;
+
+	position: relative;
+	overflow: hidden;
+}
+
+/* Decorative blobs */
+
+.categories-section::before,
+.categories-section::after {
+	content: "";
+	position: absolute;
+	border-radius: 50%;
+	filter: blur(90px);
+	opacity: .45;
+	pointer-events: none;
+}
+
+.categories-section::before {
+	width: 260px;
+	height: 260px;
+	background: #6366f1;
+	top: -80px;
+	left: -80px;
+}
+
+.categories-section::after {
+	width: 240px;
+	height: 240px;
+	background: #8b5cf6;
+	bottom: -90px;
+	right: -90px;
+}
+
+/* =====================================================
+   HEADER
+===================================================== */
+
+.categories-header {
+	position: relative;
+	z-index: 2;
+
+	text-align: center;
+	margin-bottom: 55px;
+}
+
+.categories-title {
+	font-size: 2.8rem;
+	font-weight: 800;
+	color: #111827;
+	margin-bottom: 12px;
+	letter-spacing: -.5px;
+}
+
+.categories-subtitle {
+	max-width: 620px;
+	margin: auto;
+
+	font-size: 1.05rem;
+	line-height: 1.8;
+
+	color: #6b7280;
+}
+
+/* =====================================================
+   GRID
+===================================================== */
+
+.categories-grid {
+	position: relative;
+	z-index: 2;
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 24px;
+}
+
+/* =====================================================
+   CARD
+===================================================== */
+
+.category-card {
+	position: relative;
+
+	display: flex;
+	align-items: center;
+	gap: 18px;
+
+	padding: 24px;
+
+	background: rgba(255,255,255,.85);
+	backdrop-filter: blur(14px);
+
+	border-radius: 22px;
+
+	border: 1px solid rgba(255,255,255,.6);
+
+	cursor: pointer;
+
+	overflow: hidden;
+
+	box-shadow:
+		0 12px 35px rgba(15,23,42,.08);
+
+	transition:
+		transform .35s ease,
+		box-shadow .35s ease,
+		border-color .35s ease;
+}
+
+.category-card::before {
+	content: "";
+
+	position: absolute;
+	inset: 0;
+
+	background: linear-gradient(
+		135deg,
+		rgba(79,70,229,.08),
+		rgba(139,92,246,.08)
+	);
+
+	opacity: 0;
+
+	transition: .35s;
+}
+
+.category-card:hover {
+	transform: translateY(-10px);
+
+	border-color: rgba(79,70,229,.25);
+
+	box-shadow:
+		0 25px 60px rgba(79,70,229,.15);
+}
+
+.category-card:hover::before {
+	opacity: 1;
+}
+
+/* =====================================================
+   ICON
+===================================================== */
+
+.category-icon {
+	position: relative;
+	z-index: 2;
+
+	width: 60px;
+	height: 60px;
+
+	border-radius: 18px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	background: linear-gradient(
+		135deg,
+		#4f46e5,
+		#7c3aed
+	);
+
+	color: white;
+
+	font-size: 1.4rem;
+	font-weight: 700;
+
+	box-shadow:
+		0 12px 30px rgba(79,70,229,.35);
+
+	flex-shrink: 0;
+}
+
+/* =====================================================
+   TEXT
+===================================================== */
+
+.category-content {
+	position: relative;
+	z-index: 2;
+
+	flex: 1;
+}
+
+.category-content h3 {
+	margin: 0 0 6px;
+
+	font-size: 1.15rem;
+	font-weight: 700;
+
+	color: #111827;
+
+	transition: color .3s;
+}
+
+.category-content p {
+	margin: 0;
+
+	font-size: .9rem;
+
+	color: #6b7280;
+}
+
+.category-card:hover .category-content h3 {
+	color: #4f46e5;
+}
+
+/* =====================================================
+   ARROW
+===================================================== */
+
+.category-arrow {
+	position: relative;
+	z-index: 2;
+
+	font-size: 1.3rem;
+
+	color: #9ca3af;
+
+	transition: .35s;
+}
+
+.category-card:hover .category-arrow {
+	transform: translateX(8px);
+	color: #4f46e5;
+}
+
+/* =====================================================
+   RESPONSIVE
+===================================================== */
+
+@media (max-width: 992px) {
+
+	.categories-section {
+		padding: 60px 24px;
+		margin: 80px 20px;
+	}
+
+	.categories-title {
+		font-size: 2.2rem;
+	}
+}
+
+@media (max-width: 768px) {
+
+	.categories-grid {
+		grid-template-columns: 1fr;
+	}
+
+	.categories-title {
+		font-size: 2rem;
+	}
+
+	.category-card {
+		padding: 20px;
+	}
+}
+
+@media (max-width: 480px) {
+
+	.categories-section {
+		padding: 50px 18px;
+		border-radius: 24px;
+	}
+
+	.categories-title {
+		font-size: 1.7rem;
+	}
+
+	.category-icon {
+		width: 52px;
+		height: 52px;
+		font-size: 1.2rem;
+	}
+}

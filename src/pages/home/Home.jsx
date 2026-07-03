@@ -4,6 +4,7 @@ import "./Home.css";
 import RecentPosts from "../../components/home/RecentPosts/RecentPosts";
 import SuggestedPosts from "../../components/home/SuggestedPosts/SuggestedPosts";
 import SearchBar from "../../components/home/SearchBar/SearchBar";
+import HomeCategories from "../../components/home/Categories/HomeCategories";
 import { Link } from "react-router-dom";
 import { CiCirclePlus } from "react-icons/ci";
 

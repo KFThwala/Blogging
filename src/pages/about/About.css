@@ -1,63 +1,202 @@
 .about-page {
-	padding: 2rem;
-	max-width: 900px;
+	max-width: 1200px;
 	margin: 0 auto;
-	font-family: "Segoe UI", sans-serif;
-	color: #333;
+	padding: 80px 20px;
 }
+
+/* ===============================
+   HERO
+================================ */
 
 .about-hero {
 	text-align: center;
-	margin-bottom: 3rem;
+	margin-bottom: 80px;
+}
+
+.about-badge {
+	display: inline-block;
+	padding: 8px 18px;
+	border-radius: 999px;
+
+	background: rgba(79, 70, 229, .08);
+	color: #4f46e5;
+
+	font-size: .8rem;
+	font-weight: 700;
+	letter-spacing: 1px;
+
+	margin-bottom: 24px;
 }
 
 .about-hero h1 {
-	font-size: 2.5rem;
-	margin-bottom: 1rem;
-	color: #0f62fe;
+	font-size: clamp(2.5rem, 5vw, 4.5rem);
+	font-weight: 800;
+	line-height: 1.1;
+
+	margin-bottom: 24px;
+
+	color: #111827;
+}
+
+.about-hero h1 span {
+	background: linear-gradient(135deg,#4f46e5,#7c3aed);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 }
 
 .about-hero p {
-	font-size: 1.2rem;
-	color: #555;
+	max-width: 760px;
+	margin: auto;
+
+	font-size: 1.15rem;
+	line-height: 1.9;
+
+	color: #6b7280;
 }
 
-.about-section {
-	margin-bottom: 2rem;
-}
+/* ===============================
+   INFO CARDS
+================================ */
 
-.about-section h2 {
-	font-size: 1.8rem;
-	margin-bottom: 1rem;
-	color: #222;
-}
-
-.about-section p {
-	font-size: 1rem;
-	color: #555;
-	line-height: 1.6;
-}
-
-.team-grid {
+.about-content {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-	gap: 1.5rem;
-	margin-top: 1rem;
+	grid-template-columns: repeat(auto-fit,minmax(320px,1fr));
+	gap: 30px;
+
+	margin-bottom: 90px;
 }
 
-.team-card {
-	text-align: center;
-	padding: 1rem;
-	border: 1px solid #ddd;
-	border-radius: 10px;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+.about-card {
+	background: white;
+
+	padding: 35px;
+
+	border-radius: 22px;
+
+	border: 1px solid #eef2f7;
+
+	box-shadow: 0 15px 40px rgba(15,23,42,.06);
+
+	transition: .35s;
 }
 
-.team-card img {
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
-	margin-bottom: 0.5rem;
+.about-card:hover {
+	transform: translateY(-8px);
+
+	box-shadow: 0 25px 60px rgba(15,23,42,.12);
+}
+
+.about-card h2 {
+	font-size: 1.6rem;
+	margin-bottom: 18px;
+
+	color: #111827;
+}
+
+.about-card p,
+.about-card li {
+	color: #6b7280;
+	line-height: 1.8;
+}
+
+.about-card ul {
+	padding-left: 20px;
+	margin: 0;
+}
+
+.about-card li {
+	margin-bottom: 10px;
+}
+
+/* ===============================
+   DEVELOPER
+================================ */
+
+.developer-card {
+	display: flex;
+	align-items: center;
+	gap: 50px;
+
+	padding: 40px;
+
+	background: linear-gradient(
+		135deg,
+		#4f46e5,
+		#7c3aed
+	);
+
+	border-radius: 28px;
+
+	color: white;
+}
+
+.developer-card img {
+	width: 220px;
+	height: 220px;
+
 	object-fit: cover;
 
+	border-radius: 24px;
+
+	border: 5px solid rgba(255,255,255,.25);
+
+	flex-shrink: 0;
+}
+
+.developer-role {
+	display: inline-block;
+
+	padding: 6px 14px;
+
+	background: rgba(255,255,255,.15);
+
+	border-radius: 999px;
+
+	font-size: .8rem;
+	font-weight: 700;
+
+	margin-bottom: 16px;
+}
+
+.developer-info h2 {
+	font-size: 2rem;
+	margin-bottom: 18px;
+}
+
+.developer-info p {
+	line-height: 1.9;
+	color: rgba(255,255,255,.9);
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 900px) {
+
+	.developer-card {
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.developer-card img {
+		width: 180px;
+		height: 180px;
+	}
+}
+
+@media (max-width: 768px) {
+
+	.about-page {
+		padding: 60px 18px;
+	}
+
+	.about-content {
+		grid-template-columns: 1fr;
+	}
+
+	.about-card,
+	.developer-card {
+		padding: 28px;
+	}
 }

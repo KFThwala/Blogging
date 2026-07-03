@@ -6,10 +6,18 @@ import "./UserProfile.css";
 import HomeButton from "../../components/common/homeButton/HomeButton";
 
 function UserProfile() {
-	const { id } = useParams(); // userId from URL
+	const { id } = useParams();
+
 	const [user, setUser] = useState(null);
 	const [posts, setPosts] = useState([]);
 	const [loading, setLoading] = useState(true);
+
+	const [editing, setEditing] = useState(false);
+
+	const [formData, setFormData] = useState({
+		fullName: "",
+		bio: "",
+	});
 
 	useEffect(() => {
 		const fetchUserAndPosts = async () => {
@@ -20,35 +28,126 @@ function UserProfile() {
 				]);
 
 				setUser(userRes.data);
+
+				setFormData({
+					fullName: userRes.data.fullName || "",
+					bio: userRes.data.bio || "",
+				});
+
 				setPosts(postsRes.data);
 			} catch (error) {
-				console.error("Failed to fetch profile:", error.message);
+				console.error("Failed to fetch profile:", error);
 			} finally {
 				setLoading(false);
 			}
 		};
 
-		if (id) fetchUserAndPosts();
+		if (id) {
+			fetchUserAndPosts();
+		}
 	}, [id]);
 
-	if (loading) return <p style={{ textAlign: "center" }}>Loading profile...</p>;
-	if (!user) return <p style={{ textAlign: "center" }}>User not found.</p>;
+	const handleChange = (e) => {
+		setFormData((prev) => ({
+			...prev,
+			[e.target.name]: e.target.value,
+		}));
+	};
 
+	const handleSave = async () => {
+		try {
+			const res = await API.put(`/user/profile/${id}`, formData);
+
+			setUser(res.data);
+			setEditing(false);
+		} catch (err) {
+			console.error("Failed to update profile:", err);
+		}
+	};
+
+	const handleCancel = () => {
+		setFormData({
+			fullName: user.fullName || "",
+			bio: user.bio || "",
+		});
+
+		setEditing(false);
+	};
+
+	if (loading) {
+		return <p style={{ textAlign: "center" }}>Loading profile...</p>;
+	}
+
+	if (!user) {
+		return <p style={{ textAlign: "center" }}>User not found.</p>;
+	}
+	console.log(editing);
 	return (
 		<>
 			<HomeButton />
+
 			<div className="profile-container">
 				<div className="banner">
 					<div className="banner-top"></div>
+
 					<div className="banner-bottom">
 						<div className="profile-info">
-							<span className="profile-name">{user.fullName}</span>
-							<span className="profile-email">{user.email}</span>
-							<p className="profile-bio">
-								BIO{user.bio === "" ? ": EMPTY" : ": " + user.bio || ""}
-							</p>
+							{editing ? (
+								<>
+									<input
+										type="text"
+										name="fullName"
+										value={formData.fullName}
+										onChange={handleChange}
+										placeholder="Full name"
+									/>
+
+									<textarea
+										name="bio"
+										value={formData.bio}
+										onChange={handleChange}
+										rows={4}
+										placeholder="Tell everyone a little about yourself..."
+									/>
+
+									<div
+										style={{
+											display: "flex",
+											gap: "10px",
+											marginTop: "10px",
+										}}>
+										<button onClick={handleSave}>Save Profile</button>
+
+										<button
+											onClick={handleCancel}
+											style={{
+												background: "#e5e7eb",
+												color: "#111827",
+											}}>
+											Cancel
+										</button>
+									</div>
+								</>
+							) : (
+								<>
+									<span className="profile-name">{user.fullName}</span>
+
+									<span className="profile-email">{user.email}</span>
+
+									<p className="profile-bio">
+										<strong>Bio:</strong> {user.bio || "No bio available."}
+									</p>
+
+									<button
+										onClick={() => setEditing(true)}
+										style={{ marginTop: "10px" }}>
+										Edit Profile
+									</button>
+								</>
+							)}
 						</div>
 					</div>
+
 					<div className="avatar-wrapper">
 						{user.avatar ? (
 							<img
@@ -58,14 +157,15 @@ function UserProfile() {
 							/>
 						) : (
 							<div className="avatar-fallback">
-								{user?.fullName?.[0]?.toUpperCase()}
+								{user.fullName?.charAt(0).toUpperCase()}
 							</div>
 						)}
 					</div>
 				</div>
 
 				<div className="user-posts-section">
-					<h2 className="posts-title">POSTS</h2>
+					<h2 className="posts-title">Posts</h2>
+
 					{posts.length === 0 ? (
 						<p>No posts yet.</p>
 					) : (

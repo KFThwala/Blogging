@@ -30,7 +30,7 @@ function PostCard({
 			<Link to={`/post/${post._id}`} className="post-overlay-link">
 				<div className="post-overlay">
 					<h3 className="post-title">{title}</h3>
-					<p className="post-excerpt">{excerpt}</p>
+					{/* <p className="post-excerpt">{excerpt}</p> */}
 				</div>
 			</Link>
 
@@ -58,7 +58,7 @@ function PostCard({
 							? `${formatDistanceToNow(new Date(createdAt), {
 									addSuffix: true,
 									includeSeconds: true,
-							  })}`.replace(/^about /, "")
+								})}`.replace(/^about /, "")
 							: "Unknown date"}
 					</div>
 

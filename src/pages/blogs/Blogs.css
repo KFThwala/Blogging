@@ -25,6 +25,13 @@
   margin-bottom: 3rem;
 }
 
+.active-filter {
+  
+  margin-bottom: 1.5rem;
+  font-size: 1.1rem;
+  color: #34495e;
+}
+
 @media (max-width: 768px) {
   .post-grid {
     grid-template-columns: 1fr;

@@ -1,48 +1,140 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import {
+	FiCalendar,
+	FiClock,
+	FiHeart,
+	FiMessageCircle,
+	FiArrowRight,
+} from "react-icons/fi";
+import { Link, useNavigate } from "react-router-dom";
+import API from "../../../api/axios";
 import "./SamplePostSection.css";
-
-const posts = [
-	{
-		id: 1,
-		title: "How to Start Blogging in 2024",
-		snippet:
-			"A quick guide to launching your first blog and finding your niche.",
-		image:
-			"https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?auto=format&fit=crop&w=800&q=80",
-	},
-	{
-		id: 2,
-		title: "Top 10 Tools for Modern Writers",
-		snippet:
-			"Explore powerful tools that make writing, editing, and publishing easier.",
-		image:
-			"https://images.unsplash.com/photo-1581092334506-c4f8eaf15829?auto=format&fit=crop&w=800&q=80",
-	},
-	{
-		id: 3,
-		title: "Why Blogging Still Matters in 2024",
-		snippet: "Discover why content creation is more valuable than ever before.",
-		image:
-			"https://images.unsplash.com/photo-1532619675605-1b4a77e43e52?auto=format&fit=crop&w=800&q=80",
-	},
-];
+import PostCard from "../../common/postCard/PostCard";
 
 function SamplePostsSection() {
+	const [posts, setPosts] = useState([]);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState("");
+
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		const fetchRecentPosts = async () => {
+			try {
+				setLoading(true);
+
+				const response = await API.get("/posts/recent?limit=4");
+
+				const postsData = Array.isArray(response.data)
+					? response.data
+					: response.data.posts || response.data.data || [];
+
+				setPosts(postsData);
+				setError("");
+			} catch (err) {
+				console.error(err);
+				setError("Failed to load posts.");
+			} finally {
+				setLoading(false);
+			}
+		};
+
+		fetchRecentPosts();
+	}, []);
+
+	const formatDate = (date) => {
+		if (!date) return "";
+
+		return new Date(date).toLocaleDateString("en-US", {
+			month: "short",
+			day: "numeric",
+			year: "numeric",
+		});
+	};
+
+	const calculateReadTime = (content) => {
+		if (!content) return "1 min read";
+
+		const words = content.split(/\s+/).length;
+		const minutes = Math.ceil(words / 200);
+
+		return `${Math.max(minutes, 1)} min read`;
+	};
+
+	const getAuthorName = (author) => {
+		if (!author) return "Anonymous";
+
+		return author.fullName || author.name || author.username || "Anonymous";
+	};
+
+	const getExcerpt = (post) => {
+		if (post.excerpt) return post.excerpt;
+
+		if (!post.content) return "";
+
+		const plain = post.content.replace(/<[^>]*>/g, "");
+
+		return plain.length > 120 ? plain.substring(0, 120) + "..." : plain;
+	};
+
+	if (loading) {
+		return (
+			<section className="sample-posts-section">
+				<div className="posts-header">
+					<div>
+						<h2 className="posts-title">Latest Posts</h2>
+					</div>
+				</div>
+
+				<div className="posts-grid">
+					{[1, 2, 3, 4].map((item) => (
+						<div className="post-card skeleton" key={item}>
+							<div className="post-image-wrapper">
+								<div className="skeleton-image"></div>
+							</div>
+
+							<div className="post-content">
+								<div className="skeleton-title"></div>
+								<div className="skeleton-text"></div>
+								<div className="skeleton-text short"></div>
+							</div>
+						</div>
+					))}
+				</div>
+			</section>
+		);
+	}
+
+	if (error) {
+		return (
+			<section className="sample-posts-section">
+				<div className="posts-header">
+					<h2 className="posts-title">Latest Posts</h2>
+				</div>
+
+				<div className="error-state">
+					<p>{error}</p>
+				</div>
+			</section>
+		);
+	}
+
 	return (
 		<section className="sample-posts-section">
-			<h2 className="posts-title">Latest Posts</h2>
+			<div className="posts-header">
+				<div>
+					<h2 className="posts-title">Latest Posts</h2>
+					<p className="posts-subtitle">Fresh articles from our community.</p>
+				</div>
+
+				<Link to="/blog" className="view-all-btn">
+					View All
+				</Link>
+			</div>
+
 			<div className="posts-grid">
 				{posts.map((post) => (
-					<div className="post-card" key={post.id}>
-						<img src={post.image} alt={post.title} className="post-image" />
-						<div className="post-content">
-							<h3>{post.title}</h3>
-							<p>{post.snippet}</p>
-							<a href="/blog" className="read-more">
-								Read More →
-							</a>
-						</div>
-					</div>
+					<PostCard key={post._id} post={post} />
 				))}
 			</div>
 		</section>
