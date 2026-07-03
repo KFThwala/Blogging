@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import API from "../../../api/axios";
 import { FiHeart, FiMessageCircle } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
-import "./FeaturedPost.css";
+import "./featuredPost.css";
 
 function FeaturedPost() {
 	const [post, setPost] = useState(null);
