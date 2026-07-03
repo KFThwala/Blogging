@@ -127,7 +127,7 @@ function SamplePostsSection() {
 					<p className="posts-subtitle">Fresh articles from our community.</p>
 				</div>
 
-				<Link to="/blog" className="view-all-btn">
+				<Link to="/blogs" className="view-all-btn">
 					View All
 				</Link>
 			</div>
