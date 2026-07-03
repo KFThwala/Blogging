@@ -67,7 +67,7 @@ function AboutSection() {
 						</div>
 					</div>
 
-					<Link to="/blog" className="about-btn">
+					<Link to="/blogs" className="about-btn">
 						Explore Articles
 						<FiArrowRight />
 					</Link>

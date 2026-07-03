@@ -25,7 +25,7 @@ function Header() {
 	const handleLogoutConfirm = () => {
 		logout();
 		setShowModal(false);
-		navigate("/landing");
+		navigate("/");
 	};
 
 	const toggleMobileMenu = () => {
